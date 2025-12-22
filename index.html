@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joe For Arlington. A Better Arlington for Every Generation</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js" defer></script>
+
+<style>
+:root {
+  --bg-primary: #5e1315;
+  --bg-glass: rgba(255,255,255,0.1);
+  --bg-glass-strong: rgba(255,255,255,0.15);
+  --text-primary: #ffffff;
+  --radius-lg: 20px;
+  --radius-md: 15px;
+  --radius-pill: 50px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+a, button {
+  color: inherit;
+  font: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(94,19,21,0.95);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+nav {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 40px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.nav-link.active {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.home-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: #ffffff;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle::after {
+  content: " ▾";
+  font-size: 12px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  background: rgba(94,19,21,0.98);
+  border-radius: 8px;
+  min-width: 220px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 12px 20px;
+}
+
+.dropdown-content a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.dropdown[aria-expanded="true"] .dropdown-content {
+  display: block;
+}
+
+main {
+  display: none;
+  min-height: 100vh;
+  padding: 120px 40px 80px;
+}
+
+main.active {
+  display: block;
+}
+
+.content {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.center {
+  text-align: center;
+}
+
+h1 { font-size: 72px; margin-bottom: 24px; }
+h2 { font-size: 56px; margin-bottom: 32px; text-align: center; }
+h3 { font-size: 32px; margin-bottom: 16px; }
+h4 { font-size: 24px; margin-bottom: 12px; }
+
+p {
+  font-size: 20px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.tagline {
+  font-size: 28px;
+  opacity: 0.95;
+}
+
+.image-placeholder {
+  width: 100%;
+  max-width: 800px;
+  aspect-ratio: 16 / 9;
+  background: var(--bg-glass);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px auto;
+  font-style: italic;
+  opacity: 0.7;
+}
+
+.policy-section {
+  background: rgba(255,255,255,0.08);
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  margin: 30px 0;
+}
+
+.policy-section ul {
+  margin-left: 25px;
+  line-height: 1.9;
+}
+
+.emphasis-box {
+  background: var(--bg-glass-strong);
+  padding: 25px;
+  border-radius: var(--radius-md);
+  border-left: 4px solid #ffffff;
+  margin: 25px 0;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 18px 40px;
+  border-radius: var(--radius-pill);
+  border: 2px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.15);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  h1 { font-size: 42px; }
+  h2 { font-size: 36px; }
+  main { padding: 100px 20px 60px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav aria-label="Primary Navigation">
+  <button class="logo" data-page="home">Joe For Arlington</button>
+
+  <ul class="nav-links">
+    <li>
+      <button class="home-icon nav-link" data-page="home" aria-label="Home">
+        <i data-lucide="house"></i>
+      </button>
+    </li>
+
+    <li><a href="#about" class="nav-link" data-page="about">About Me</a></li>
+    <li><a href="#support" class="nav-link" data-page="support">Support</a></li>
+
+    <li class="dropdown" aria-haspopup="true" aria-expanded="false">
+      <button class="nav-link dropdown-toggle">Issues</button>
+      <div class="dropdown-content">
+        <a href="#schools" data-page="schools">Our Schools</a>
+        <a href="#infrastructure" data-page="infrastructure">Our Infrastructure</a>
+        <a href="#future" data-page="future">Our Future</a>
+      </div>
+    </li>
+
+    <li><a href="#endorsements" class="nav-link" data-page="endorsements">Endorsements</a></li>
+  </ul>
+</nav>
+</header>
+
+<main id="home" class="active">
+  <div class="content center">
+    <div class="image-placeholder">Photo. Joe in Arlington</div>
+    <h1>A Better Arlington<br>for Every Generation</h1>
+    <p class="tagline">From the classroom to the Capital Planning Committee, Joe has the experience to lead Arlington forward.</p>
+  </div>
+</main>
+
+<main id="about">
+  <div class="content">
+    <h2>About Me</h2>
+    <div class="image-placeholder">Photo. Joe with family</div>
+    <p>Arlington is more than a zip code to me. It is home.</p>
+  </div>
+</main>
+
+<main id="schools"><div class="content"><h2>Our Schools</h2></div></main>
+<main id="infrastructure"><div class="content"><h2>Our Infrastructure</h2></div></main>
+<main id="future"><div class="content"><h2>Our Future</h2></div></main>
+<main id="endorsements"><div class="content"><h2>Endorsements</h2></div></main>
+<main id="support"><div class="content"><h2>Support the Campaign</h2></div></main>
+
+<script>
+lucide.createIcons();
+
+const pages = document.querySelectorAll('main');
+const navLinks = document.querySelectorAll('[data-page]');
+const dropdown = document.querySelector('.dropdown');
+
+function showPage(pageId) {
+  pages.forEach(p => p.classList.toggle('active', p.id === pageId));
+  navLinks.forEach(l => l.classList.toggle('active', l.dataset.page === pageId));
+  history.replaceState(null, '', '#' + pageId);
+  window.scrollTo(0,0);
+}
+
+navLinks.forEach(link => {
+  link.addEventListener('click', e => {
+    const page = link.dataset.page;
+    if (page) {
+      e.preventDefault();
+      showPage(page);
+    }
+  });
+});
+
+dropdown.querySelector('.dropdown-toggle').addEventListener('click', () => {
+  const expanded = dropdown.getAttribute('aria-expanded') === 'true';
+  dropdown.setAttribute('aria-expanded', String(!expanded));
+});
+
+const initialPage = location.hash.replace('#','') || 'home';
+showPage(initialPage);
+</script>
+
+</body>
+</html>
