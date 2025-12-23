@@ -1,304 +1,676 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Joe For Arlington. A Better Arlington for Every Generation</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joe For Arlington - A Better Arlington for Every Generation</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js" defer></script>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #5e1315;
+            color: #ffffff;
+        }
 
-<style>
-:root {
-  --bg-primary: #5e1315;
-  --bg-glass: rgba(255,255,255,0.1);
-  --bg-glass-strong: rgba(255,255,255,0.15);
-  --text-primary: #ffffff;
-  --radius-lg: 20px;
-  --radius-md: 15px;
-  --radius-pill: 50px;
-}
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding: 120px 40px 80px;
+        }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+        .page.active {
+            display: block;
+        }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: var(--bg-primary);
-  color: var(--text-primary);
-}
+        .content {
+            max-width: 980px;
+            margin: 0 auto;
+        }
 
-a, button {
-  color: inherit;
-  font: inherit;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
+        .content.center {
+            text-align: center;
+        }
 
-a:focus-visible,
-button:focus-visible {
-  outline: 3px solid #ffffff;
-  outline-offset: 3px;
-}
+        h1 {
+            font-size: 72px;
+            font-weight: 700;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+            color: #ffffff;
+            line-height: 1.1;
+        }
 
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  background: rgba(94,19,21,0.95);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-}
+        h2 {
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin-bottom: 32px;
+            color: #ffffff;
+            text-align: center;
+        }
 
-nav {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 20px 40px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-}
+        h3 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            margin-top: 32px;
+            color: #ffffff;
+        }
 
-.logo {
-  font-size: 24px;
-  font-weight: 700;
-}
+        h4 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
 
-.nav-links {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  flex-wrap: wrap;
-}
+        p {
+            font-size: 20px;
+            line-height: 1.7;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
 
-.nav-link {
-  font-size: 16px;
-  font-weight: 500;
-  text-decoration: none;
-}
+        .tagline {
+            font-size: 28px;
+            font-weight: 500;
+            margin-top: 30px;
+            opacity: 0.95;
+            line-height: 1.4;
+        }
 
-.nav-link.active {
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
+        .hero-image-placeholder {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 40px auto;
+            font-size: 18px;
+            font-style: italic;
+            opacity: 0.7;
+        }
 
-.home-icon svg {
-  width: 20px;
-  height: 20px;
-  stroke: #ffffff;
-}
+        .small-image-placeholder {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px auto;
+            font-size: 16px;
+            font-style: italic;
+            opacity: 0.7;
+        }
 
-.dropdown {
-  position: relative;
-}
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 2000;
+            background: rgba(94, 19, 21, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-.dropdown-toggle::after {
-  content: " ▾";
-  font-size: 12px;
-}
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  top: calc(100% + 10px);
-  left: 0;
-  background: rgba(94,19,21,0.98);
-  border-radius: 8px;
-  min-width: 220px;
-  border: 1px solid rgba(255,255,255,0.1);
-}
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            cursor: pointer;
+        }
 
-.dropdown-content a {
-  display: block;
-  padding: 12px 20px;
-}
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            align-items: center;
+        }
 
-.dropdown-content a:hover {
-  background: rgba(255,255,255,0.1);
-}
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+            white-space: nowrap;
+        }
 
-.dropdown[aria-expanded="true"] .dropdown-content {
-  display: block;
-}
+        .nav-links a:hover {
+            opacity: 0.7;
+        }
 
-main {
-  display: none;
-  min-height: 100vh;
-  padding: 120px 40px 80px;
-}
+        .nav-links a.active {
+            opacity: 1;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
 
-main.active {
-  display: block;
-}
+        .home-icon {
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            color: #ffffff;
+            line-height: 1;
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
 
-.content {
-  max-width: 980px;
-  margin: 0 auto;
-}
+        .home-icon:hover {
+            opacity: 0.7;
+        }
 
-.center {
-  text-align: center;
-}
+        .dropdown {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
 
-h1 { font-size: 72px; margin-bottom: 24px; }
-h2 { font-size: 56px; margin-bottom: 32px; text-align: center; }
-h3 { font-size: 32px; margin-bottom: 16px; }
-h4 { font-size: 24px; margin-bottom: 12px; }
+        .dropdown::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: -10px;
+            right: -10px;
+            height: 20px;
+            background: transparent;
+        }
 
-p {
-  font-size: 20px;
-  line-height: 1.7;
-  margin-bottom: 20px;
-}
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: calc(100% + 15px);
+            left: 0;
+            background: rgba(94, 19, 21, 0.98);
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+            z-index: 1;
+            border-radius: 8px;
+            padding: 10px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-.tagline {
-  font-size: 28px;
-  opacity: 0.95;
-}
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
 
-.image-placeholder {
-  width: 100%;
-  max-width: 800px;
-  aspect-ratio: 16 / 9;
-  background: var(--bg-glass);
-  border-radius: var(--radius-lg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 40px auto;
-  font-style: italic;
-  opacity: 0.7;
-}
+        .dropdown-content a {
+            display: block;
+            padding: 12px 20px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+            font-size: 16px;
+            color: #ffffff;
+        }
 
-.policy-section {
-  background: rgba(255,255,255,0.08);
-  padding: 40px;
-  border-radius: var(--radius-lg);
-  margin: 30px 0;
-}
+        .dropdown-content a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            opacity: 1;
+        }
 
-.policy-section ul {
-  margin-left: 25px;
-  line-height: 1.9;
-}
+        .dropdown-toggle {
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            color: #ffffff;
+            transition: opacity 0.3s ease;
+        }
 
-.emphasis-box {
-  background: var(--bg-glass-strong);
-  padding: 25px;
-  border-radius: var(--radius-md);
-  border-left: 4px solid #ffffff;
-  margin: 25px 0;
-}
+        .dropdown-toggle:hover {
+            opacity: 0.7;
+        }
 
-.cta-button {
-  display: inline-block;
-  padding: 18px 40px;
-  border-radius: var(--radius-pill);
-  border: 2px solid rgba(255,255,255,0.3);
-  background: rgba(255,255,255,0.15);
-  font-weight: 600;
-  text-decoration: none;
-}
+        .dropdown-toggle::after {
+            content: " ▾";
+            font-size: 12px;
+            margin-left: 2px;
+        }
 
-@media (max-width: 768px) {
-  h1 { font-size: 42px; }
-  h2 { font-size: 36px; }
-  main { padding: 100px 20px 60px; }
-}
-</style>
+        .policy-section {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            margin: 30px 0;
+        }
+
+        .policy-section h3 {
+            margin-top: 0;
+            font-size: 36px;
+        }
+
+        .policy-section p {
+            font-size: 19px;
+        }
+
+        .policy-section ul {
+            margin-left: 25px;
+            margin-top: 15px;
+            line-height: 1.9;
+            font-size: 19px;
+        }
+
+        .policy-section li {
+            margin-bottom: 12px;
+        }
+
+        .emphasis-box {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 4px solid #ffffff;
+        }
+
+        .emphasis-box p {
+            margin-bottom: 0;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .endorsement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .endorsement-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 35px;
+            border-radius: 20px;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .endorsement-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .endorsement-card h3 {
+            margin-top: 0;
+            font-size: 28px;
+        }
+
+        .endorsement-card p {
+            font-size: 18px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 40px;
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: 600;
+            margin: 15px 10px;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .contact-info {
+            margin-top: 40px;
+            font-size: 22px;
+            line-height: 1.8;
+        }
+
+        .contact-info a {
+            color: #ffffff;
+            text-decoration: underline;
+            text-decoration-color: rgba(255, 255, 255, 0.5);
+            transition: text-decoration-color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            text-decoration-color: #ffffff;
+        }
+
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 20px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 42px;
+            }
+            h2 {
+                font-size: 36px;
+            }
+            h3 {
+                font-size: 28px;
+            }
+            p, .tagline {
+                font-size: 18px;
+            }
+            nav {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-links {
+                gap: 12px;
+                font-size: 13px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .logo {
+                font-size: 20px;
+            }
+            .policy-section {
+                padding: 25px;
+            }
+            .policy-section h3 {
+                font-size: 28px;
+            }
+            .page {
+                padding: 100px 20px 60px;
+            }
+            .hero-image-placeholder {
+                height: 250px;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <header>
+        <nav>
+            <div class="logo" onclick="showPage('home')">Joe For Arlington</div>
+            <ul class="nav-links">
+                <li>
+                    <svg class="home-icon" onclick="showPage('home')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        <polyline points="9 22 9 12 15 12 15 22"/>
+                    </svg>
+                </li>
+                <li><a class="nav-link" onclick="showPage('about')">About Me</a></li>
+                <li><a class="nav-link" onclick="showPage('support')">Support</a></li>
+                <li class="dropdown">
+                    <span class="nav-link dropdown-toggle">Issues</span>
+                    <div class="dropdown-content">
+                        <a onclick="showPage('schools')">Our Schools</a>
+                        <a onclick="showPage('infrastructure')">Our Infrastructure</a>
+                        <a onclick="showPage('future')">Our Future</a>
+                    </div>
+                </li>
+                <li><a class="nav-link" onclick="showPage('endorsements')">Endorsements</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<header>
-<nav aria-label="Primary Navigation">
-  <button class="logo" data-page="home">Joe For Arlington</button>
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <div class="content center">
+            <div class="hero-image-placeholder">[Photo: Joe on Minuteman Bikeway or at Arlington Town Day]</div>
+            <h1>A Better Arlington<br>for Every Generation</h1>
+            <p class="tagline">From the classroom to the Capital Planning Committee, Joe has the experience to lead Arlington forward.</p>
+        </div>
+    </div>
 
-  <ul class="nav-links">
-    <li>
-      <button class="home-icon nav-link" data-page="home" aria-label="Home">
-        <i data-lucide="house"></i>
-      </button>
-    </li>
+    <!-- ABOUT ME PAGE -->
+    <div id="about" class="page">
+        <div class="content">
+            <h2>About Me</h2>
+            
+            <div class="small-image-placeholder">[Photo: Joe with family in Arlington]</div>
+            
+            <p style="font-size: 22px; font-weight: 500;">Arlington is more than just a zip code to me. It is the town that raised me, the community where I chose to build my life, and the place where I am now raising my own children.</p>
+            
+            <h3>Born and Raised in Arlington</h3>
+            <p>I grew up in Arlington, walking these same streets and attending our public schools. My connection to this town is not just sentimental; it is practical and deeply rooted. Arlington shaped who I am today.</p>
+            
+            <h3>Raising My Own Family</h3>
+            <p>Today, I'm raising my children in Arlington. For two years, I led the Dallin PTO, focusing on understanding the needs of new families and rebuilding our sense of community connection. I've coached youth sports, participated in school events, and invested deeply in the same institutions that served me as a child.</p>
+            
+            <p>I see firsthand the challenges facing young families—from school facility needs to safe routes for our kids to bike and walk. These aren't abstract policy questions; they're daily realities.</p>
+            
+            <h3>Caring for Family at Every Stage</h3>
+            <p>When my parents needed support, I didn't send them away—I built an accessory dwelling unit to provide safe, single-level living for my mother. When my mother-in-law wanted to be closer to her grandchildren, I purchased a small condo in a multi-family building so she could age in place near family.</p>
+            
+            <p>Multi-generational living has enriched my family's life immeasurably. These personal experiences taught me about the housing challenges facing seniors, the importance of accessibility, and the need for zoning laws that allow families to stay together.</p>
+            
+            <div class="emphasis-box">
+                <p>I have navigated Arlington as a student in our public schools, as a homeowner, as a parent leading the Dallin PTO, and as a son helping my family age in place. This is the lifecycle of Arlington—and I understand what each generation needs to thrive.</p>
+            </div>
+        </div>
+    </div>
 
-    <li><a href="#about" class="nav-link" data-page="about">About Me</a></li>
-    <li><a href="#support" class="nav-link" data-page="support">Support</a></li>
+    <!-- OUR SCHOOLS PAGE -->
+    <div id="schools" class="page">
+        <div class="content">
+            <h2>Our Schools</h2>
+            
+            <p style="font-size: 22px; text-align: center; margin-bottom: 40px;">Our schools have always been a point of pride. They served me well as a student, and they are serving my children well today.</p>
+            
+            <div class="policy-section">
+                <h3>Investing in Excellence</h3>
+                <p>That reputation is built on sustained investment, and I am committed to keeping our school system performing at the highest tier. A strong school system requires more than just a budget; it requires community.</p>
+                
+                <h4>My Commitment:</h4>
+                <ul>
+                    <li><strong>Maintain Top-Tier Performance:</strong> Continue funding that supports academic excellence while maintaining fiscal responsibility</li>
+                    <li><strong>Upgrade School Facilities:</strong> Ensure our buildings meet 21st-century learning needs and provide safe, modern environments for students and educators</li>
+                    <li><strong>Support the Whole Student:</strong> Maintain programs, resources, and facilities that develop well-rounded individuals</li>
+                    <li><strong>Empower Educators:</strong> Ensure our teachers have the resources and support they need to succeed</li>
+                    <li><strong>Build Community:</strong> Drawing on my experience leading the Dallin PTO, foster stronger connections between families, schools, and the broader Arlington community</li>
+                </ul>
+                
+                <div class="emphasis-box">
+                    <p>Quality education requires sustained commitment. As a parent and former PTO leader, I understand both the challenges facing our schools and the aspirations families have for their children.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <li class="dropdown" aria-haspopup="true" aria-expanded="false">
-      <button class="nav-link dropdown-toggle">Issues</button>
-      <div class="dropdown-content">
-        <a href="#schools" data-page="schools">Our Schools</a>
-        <a href="#infrastructure" data-page="infrastructure">Our Infrastructure</a>
-        <a href="#future" data-page="future">Our Future</a>
-      </div>
-    </li>
+    <!-- OUR INFRASTRUCTURE PAGE -->
+    <div id="infrastructure" class="page">
+        <div class="content">
+            <h2>Our Infrastructure</h2>
+            
+            <p style="font-size: 22px; text-align: center; margin-bottom: 40px;">A livable town is a safe town. Whether you're driving to work, walking to the bus, or riding a bike to school, you deserve to get there safely.</p>
+            
+            <div class="policy-section">
+                <h3>Vision Zero: Designing for Safety</h3>
+                <p>I have been deeply involved in examining our infrastructure through my work on the Park Ave Safety Study. I advocate for a Vision Zero approach where we actively design our streets to reduce accident rates to zero.</p>
+                
+                <h4>Safe Streets for All:</h4>
+                <ul>
+                    <li><strong>Complete the Minuteman Bikeway Connections:</strong> Create a comprehensive network of safe cycling routes connecting neighborhoods to schools, businesses, and recreational areas</li>
+                    <li><strong>Implement Smart Proactive Maintenance:</strong> Fix sidewalks and roads before they become hazards, not after. This approach saves money and prevents injuries</li>
+                    <li><strong>Support Complete Streets:</strong> Design infrastructure that works safely for pedestrians, cyclists, and drivers of all ages and abilities</li>
+                    <li><strong>Prioritize Pedestrian Safety:</strong> Enhance crosswalks, improve lighting, and create traffic calming measures in residential neighborhoods</li>
+                </ul>
+            </div>
+            
+            <div class="policy-section">
+                <h3>Proactive Maintenance Saves Money</h3>
+                <p>We cannot wait for our infrastructure to fail before we fix it. My experience on the Capital Planning Committee has shown me the financial logic of preventive maintenance.</p>
+                
+                <div class="emphasis-box">
+                    <p><strong>The Math is Simple:</strong> When we fix a road today for $500,000, we avoid a $2 million reconstruction tomorrow. When we maintain sidewalks proactively, we prevent costly liability claims and keep our neighbors safe. Smart planning protects both our wallets and our community.</p>
+                </div>
+                
+                <h4>Infrastructure Investment Strategy:</h4>
+                <ul>
+                    <li><strong>Capital Planning Approach:</strong> Use data-driven assessment to prioritize repairs based on condition and projected lifespan</li>
+                    <li><strong>Road Maintenance Roadmap:</strong> Develop a multi-year plan that addresses our backlog systematically</li>
+                    <li><strong>Sidewalk Repair Program:</strong> Create a proactive schedule to fix deteriorating sidewalks before they become trip hazards</li>
+                    <li><strong>Bikeway Enhancement:</strong> Repair and improve the Minuteman Bikeway to maintain this valuable community asset</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
-    <li><a href="#endorsements" class="nav-link" data-page="endorsements">Endorsements</a></li>
-  </ul>
-</nav>
-</header>
+    <!-- OUR FUTURE PAGE -->
+    <div id="future" class="page">
+        <div class="content">
+            <h2>Our Future</h2>
+            
+            <div class="policy-section">
+                <h3>Fiscal Responsibility and Sustainable Growth</h3>
+                <p>Our town faces a challenging fiscal landscape. We rely heavily on residential property taxes to fund our services, placing a significant burden on homeowners. My time on the Capital Planning Committee has given me a clear view of our financial reality: <strong>we cannot rely solely on overrides to solve our structural deficits.</strong></p>
+                
+                <h4>Smart Commercial Growth Strategy:</h4>
+                <p>I support strategic commercial development along our major corridors like Massachusetts Avenue and Broadway. This is not just about bringing new businesses and amenities to our neighborhoods; it is about diversifying our tax base.</p>
+                
+                <ul>
+                    <li><strong>Diversify Revenue Sources:</strong> Increase the commercial share of our tax base to reduce pressure on residential property owners</li>
+                    <li><strong>Incentivize Quality Development:</strong> Attract businesses that enhance our walkable neighborhoods while generating sustainable revenue</li>
+                    <li><strong>Protect Neighborhood Character:</strong> Focus commercial growth on appropriate corridors while preserving residential areas</li>
+                    <li><strong>Fund Essential Services:</strong> Ensure we have resources to maintain roads, parks, schools, and public services without constantly asking residents for more</li>
+                </ul>
+                
+                <div class="emphasis-box">
+                    <p>By increasing commercial tax revenue, we can protect homeowners and ensure we have the funds to maintain our infrastructure without constantly relying on overrides. This is fiscally sustainable growth.</p>
+                </div>
+            </div>
+            
+            <div class="policy-section">
+                <h3>Housing for Every Stage of Life</h3>
+                <p>I believe Arlington should be a home for every stage of life. To make that a reality, our housing options must evolve. I have lived this value personally.</p>
+                
+                <h4>Creating Housing Options:</h4>
+                <ul>
+                    <li><strong>Support Accessory Dwelling Units (ADUs):</strong> Allow homeowners to create in-law suites and small secondary units that enable multi-generational living</li>
+                    <li><strong>Enable Aging in Place:</strong> Ensure seniors can downsize without leaving the community they love</li>
+                    <li><strong>Provide Entry Points for Young Families:</strong> Create diverse housing stock that gives families a foothold in Arlington</li>
+                    <li><strong>Modernize Zoning for Inclusivity:</strong> Update regulations to reflect how families actually want to live—together, across generations</li>
+                </ul>
+                
+                <p style="margin-top: 25px;">Multi-generational living has enriched my family's life. When I built an ADU for my mother and purchased a condo for my mother-in-law, I saw firsthand how the right housing options strengthen families and communities. I want to ensure our zoning laws allow others that same opportunity.</p>
+            </div>
+        </div>
+    </div>
 
-<main id="home" class="active">
-  <div class="content center">
-    <div class="image-placeholder">Photo. Joe in Arlington</div>
-    <h1>A Better Arlington<br>for Every Generation</h1>
-    <p class="tagline">From the classroom to the Capital Planning Committee, Joe has the experience to lead Arlington forward.</p>
-  </div>
-</main>
+    <!-- ENDORSEMENTS PAGE -->
+    <div id="endorsements" class="page">
+        <div class="content">
+            <h2>Endorsements</h2>
+            
+            <p style="font-size: 22px; margin-bottom: 40px; text-align: center;">Proudly seeking the support of organizations that share our values for a more livable, equitable, and sustainable Arlington.</p>
+            
+            <div class="endorsement-grid">
+                <div class="endorsement-card">
+                    <h3>Equitable Arlington</h3>
+                    <p>Working together for a fair, inclusive community where every resident—regardless of age, income, or background—has the opportunity to thrive. Building an Arlington that works for everyone.</p>
+                </div>
+                
+                <div class="endorsement-card">
+                    <h3>Everywhere Arlington Liveable Streets (EALS)</h3>
+                    <p>Creating safe, accessible streets for all ages and abilities. From children biking to school to seniors walking to the library, everyone deserves infrastructure that prioritizes safety and community connection.</p>
+                </div>
+            </div>
+            
+            <div class="emphasis-box" style="margin-top: 50px;">
+                <p>These partnerships reflect a shared vision: an Arlington that invests wisely, grows sustainably, and remains accessible to every generation.</p>
+            </div>
+        </div>
+    </div>
 
-<main id="about">
-  <div class="content">
-    <h2>About Me</h2>
-    <div class="image-placeholder">Photo. Joe with family</div>
-    <p>Arlington is more than a zip code to me. It is home.</p>
-  </div>
-</main>
+    <!-- SUPPORT PAGE -->
+    <div id="support" class="page">
+        <div class="content">
+            <h2>Support the Campaign</h2>
+            
+            <p style="font-size: 24px; margin-bottom: 30px; text-align: center;">Join us in building a better Arlington for every generation.</p>
+            
+            <div class="policy-section">
+                <h3>Get Involved</h3>
+                <p>This campaign is powered by neighbors who believe in smart planning, fiscal responsibility, and inclusive community building. There are many ways to help:</p>
+                
+                <ul style="font-size: 20px;">
+                    <li><strong>Volunteer:</strong> Help with door-knocking, phone banking, or event planning</li>
+                    <li><strong>Display a Lawn Sign:</strong> Show your support in your neighborhood</li>
+                    <li><strong>Spread the Word:</strong> Talk to your neighbors about why you're supporting this campaign</li>
+                    <li><strong>Attend Events:</strong> Join us at community forums and campaign events</li>
+                    <li><strong>Contribute:</strong> Make a donation to support our outreach efforts</li>
+                </ul>
+            </div>
+            
+            <div class="contact-info">
+                <p><strong>Contact the Campaign:</strong></p>
+                <p>Email: <a href="mailto:joe@joeforarlington.com">joe@joeforarlington.com</a></p>
+                <p>Follow us on social media for updates and events</p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#" class="cta-button">Volunteer Today</a>
+                <a href="#" class="cta-button">Make a Contribution</a>
+            </div>
+        </div>
+    </div>
 
-<main id="schools"><div class="content"><h2>Our Schools</h2></div></main>
-<main id="infrastructure"><div class="content"><h2>Our Infrastructure</h2></div></main>
-<main id="future"><div class="content"><h2>Our Future</h2></div></main>
-<main id="endorsements"><div class="content"><h2>Endorsements</h2></div></main>
-<main id="support"><div class="content"><h2>Support the Campaign</h2></div></main>
-
-<script>
-lucide.createIcons();
-
-const pages = document.querySelectorAll('main');
-const navLinks = document.querySelectorAll('[data-page]');
-const dropdown = document.querySelector('.dropdown');
-
-function showPage(pageId) {
-  pages.forEach(p => p.classList.toggle('active', p.id === pageId));
-  navLinks.forEach(l => l.classList.toggle('active', l.dataset.page === pageId));
-  history.replaceState(null, '', '#' + pageId);
-  window.scrollTo(0,0);
-}
-
-navLinks.forEach(link => {
-  link.addEventListener('click', e => {
-    const page = link.dataset.page;
-    if (page) {
-      e.preventDefault();
-      showPage(page);
-    }
-  });
-});
-
-dropdown.querySelector('.dropdown-toggle').addEventListener('click', () => {
-  const expanded = dropdown.getAttribute('aria-expanded') === 'true';
-  dropdown.setAttribute('aria-expanded', String(!expanded));
-});
-
-const initialPage = location.hash.replace('#','') || 'home';
-showPage(initialPage);
-</script>
-
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Remove active class from all nav links
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Add active class to corresponding nav link based on page
+            const pageToLinkMap = {
+                'home': null, // Home icon doesn't need active state
+                'about': 0,
+                'support': 1,
+                'schools': 2, // Issues dropdown
+                'infrastructure': 2, // Issues dropdown
+                'future': 2, // Issues dropdown
+                'endorsements': 3
+            };
+            
+            const linkIndex = pageToLinkMap[pageId];
+            if (linkIndex !== null && navLinks[linkIndex]) {
+                navLinks[linkIndex].classList.add('active');
+            }
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+    </script>
 </body>
 </html>
