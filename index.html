@@ -643,7 +643,7 @@
                     <img src="image.jpg" alt="Joe with his family in Arlington">
                 </div>
                 
-                <div style="max-width: 800px; margin: 0 auto; text-align: left; background: #f8f8f8; color: #5e1315; padding: 40px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                <div style="max-width: 1100px; width: 90%; margin: 0 auto; text-align: left; background: #f8f8f8; color: #5e1315; padding: 40px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                     <p style="font-size: 22px; line-height: 1.8; margin-bottom: 20px; font-weight: 600;">
                         Hi, I'm Joe and I'm running for Select Board!
                     </p>
@@ -1025,35 +1025,39 @@
         // Initialize Lucide icons
         lucide.createIcons();
         
-        // Countdown to Election Day
+        // Countdown to Election Day - Run after DOM is fully loaded
         function updateCountdown() {
-            const electionDate = new Date('2026-03-28T00:00:00');
+            const electionDate = new Date('March 28, 2026 00:00:00');
             const now = new Date();
             const diff = electionDate - now;
             
+            const countdownEl = document.getElementById('countdown');
+            if (!countdownEl) return;
+            
             if (diff > 0) {
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const countdownEl = document.getElementById('countdown');
-                if (countdownEl) {
-                    if (days === 0) {
-                        countdownEl.textContent = 'TODAY!';
-                    } else if (days === 1) {
-                        countdownEl.textContent = '1 Day Away';
-                    } else {
-                        countdownEl.textContent = days + ' Days Away';
-                    }
+                const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+                if (days === 0) {
+                    countdownEl.textContent = 'TODAY!';
+                } else if (days === 1) {
+                    countdownEl.textContent = '1 Day Away';
+                } else {
+                    countdownEl.textContent = days + ' Days Away';
                 }
             } else {
-                const countdownEl = document.getElementById('countdown');
-                if (countdownEl) {
-                    countdownEl.textContent = 'Election Complete';
-                }
+                countdownEl.textContent = 'Election Complete';
             }
         }
         
-        // Update countdown immediately and then daily
-        updateCountdown();
-        setInterval(updateCountdown, 1000 * 60 * 60); // Update every hour to catch midnight
+        // Wait for DOM to be ready, then start countdown
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                updateCountdown();
+                setInterval(updateCountdown, 1000 * 60 * 60);
+            });
+        } else {
+            updateCountdown();
+            setInterval(updateCountdown, 1000 * 60 * 60);
+        }
         
         // Get elements
         const pages = document.querySelectorAll('.page');
