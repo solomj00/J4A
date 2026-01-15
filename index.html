@@ -13,7 +13,7 @@
             --text-secondary: #333333;
             --accent-burgundy: #5e1315;
             --accent-light: #8b2326;
-            --border-color: rgba(94, 19, 21, 0.2); /* Increased opacity for accessibility */
+            --border-color: rgba(94, 19, 21, 0.2);
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
             --radius-lg: 20px;
@@ -22,26 +22,20 @@
             --container-width: 1100px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
-            padding-top: 80px; /* Offset for fixed header */
+            padding-top: 80px;
         }
 
-        /* --- Navigation --- */
+        /* Navigation */
         header {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             z-index: 2000;
             background: var(--accent-burgundy);
             box-shadow: var(--shadow);
@@ -65,12 +59,7 @@
             cursor: pointer;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 20px;
-            list-style: none;
-            align-items: center;
-        }
+        .nav-links { display: flex; gap: 20px; list-style: none; }
 
         .nav-link {
             color: #ffffff;
@@ -82,49 +71,19 @@
             padding: 8px 12px;
             border-radius: var(--radius-sm);
             cursor: pointer;
-            transition: background 0.2s;
+            transition: 0.2s;
         }
 
-        .nav-link:hover, .nav-link.active {
-            background: rgba(255, 255, 255, 0.2);
-        }
+        .nav-link.active { background: rgba(255, 255, 255, 0.2); }
 
-        .mobile-menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: white;
-        }
+        /* Content Layout */
+        .page { display: none; }
+        .page.active { display: block; }
 
-        /* --- Page Logic --- */
-        .page {
-            display: none;
-            animation: fadeIn 0.4s ease;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- Content Blocks --- */
         .content-section {
             max-width: var(--container-width);
             margin: 0 auto;
-            padding: 60px 20px;
-        }
-
-        .hero-intro-box {
-            background: var(--bg-secondary);
-            padding: 40px;
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow);
-            margin-bottom: 40px;
+            padding: 40px 20px;
         }
 
         .hero-image img {
@@ -134,7 +93,22 @@
             box-shadow: var(--shadow-lg);
         }
 
-        .story-card, .detail-section {
+        .narrative-box {
+            background: var(--bg-secondary);
+            padding: 40px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+            color: var(--text-primary);
+        }
+
+        .narrative-box p {
+            font-size: 19px;
+            margin-bottom: 20px;
+        }
+
+        /* Cards & Components */
+        .story-card {
             background: var(--bg-secondary);
             border-radius: var(--radius-lg);
             padding: 40px;
@@ -146,7 +120,6 @@
             text-align: center;
             border-top: 2px solid var(--border-color);
             padding: 40px 0;
-            margin-top: 40px;
         }
 
         .vote-date {
@@ -155,15 +128,25 @@
             color: var(--accent-burgundy);
         }
 
-        /* Mobile Styles */
+        /* Footer */
+        footer {
+            background: var(--accent-burgundy);
+            color: #ffffff;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        footer a { color: white; text-decoration: underline; }
+
+        .mobile-menu-toggle { display: none; background: none; border: none; color: white; }
+
         @media (max-width: 768px) {
             .mobile-menu-toggle { display: block; }
             .nav-links {
                 display: none;
                 position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
+                top: 70px; left: 0; width: 100%;
                 background: var(--accent-burgundy);
                 flex-direction: column;
                 padding: 20px;
@@ -175,9 +158,9 @@
 <body>
 
     <header>
-        <nav aria-label="Primary Navigation">
+        <nav>
             <button class="logo" onclick="showPage('home')">Joe For Arlington</button>
-            <button class="mobile-menu-toggle" aria-label="Toggle menu" onclick="toggleMenu()">
+            <button class="mobile-menu-toggle" onclick="toggleMenu()">
                 <i data-lucide="menu"></i>
             </button>
             <ul class="nav-links" id="navLinks">
@@ -196,13 +179,18 @@
                 <div class="hero-image">
                     <img src="image.jpg" alt="Joe with his family in Arlington">
                 </div>
-                <div class="hero-intro-box">
-                    <h2>Hi, I'm Joe and I'm running for Select Board!</h2>
-                    <p>Arlington is more than just a zip code to me. It is the town that raised me, the community where I chose to build my life, and the place where I am now raising my own children.</p>
+                
+                <div class="narrative-box">
+                    <p><strong>Hi, I'm Joe and I'm running for Select Board!</strong></p>
+                    <p>Arlington is more than just a zip code to me. It is the town that raised me, the community where I chose to build my life, and the place where I am now raising my own children. My connection to this town is not just sentimental; it is practical and deeply rooted.</p>
+                    <p>I've navigated Arlington as a student in our public schools, as a homeowner, as a parent leading the Dallin PTO, as a son helping my family age in place, and as a member of town government.</p>
+                    <p>I am running for office because I want to ensure that Arlington remains a place of opportunity for every generation—from the students entering kindergarten to the seniors who have spent a lifetime building this community. My platform is built on the belief that with smart planning and experienced leadership, we can maintain what we love about Arlington while modernizing it for the future.</p>
                 </div>
+
                 <div class="vote-reminder">
                     <p>Election Day: March 28, 2026</p>
                     <div id="countdown" class="vote-date">Calculating...</div>
+                    <p><a href="https://www.arlingtonma.gov/town-governance/elections-voting/" target="_blank" style="color: var(--accent-burgundy)">Voting Information</a></p>
                 </div>
             </div>
         </section>
@@ -212,50 +200,4 @@
                 <h1>About Me</h1>
                 <article class="story-card">
                     <h3>Raising My Own Family</h3>
-                    <p>Today, I'm raising my children in Arlington. For two years, I led the Dallin PTO...</p>
-                </article>
-            </div>
-        </section>
-
-        </main>
-
-    <script>
-        // Initialize Icons
-        lucide.createIcons();
-
-        // Page Switching Logic
-        function showPage(pageId) {
-            // Hide all pages
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            // Show selected page
-            document.getElementById(pageId).classList.add('active');
-            
-            // Update Nav UI
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-                if(link.innerText.toLowerCase() === pageId || (pageId === 'home' && link.innerText === 'Home')) {
-                    link.classList.add('active');
-                }
-            });
-
-            // Close mobile menu
-            document.getElementById('navLinks').classList.remove('open');
-            window.scrollTo(0,0);
-        }
-
-        function toggleMenu() {
-            document.getElementById('navLinks').classList.toggle('open');
-        }
-
-        // Simple Countdown
-        function updateCountdown() {
-            const electionDate = new Date('March 28, 2026').getTime();
-            const now = new Date().getTime();
-            const diff = electionDate - now;
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            document.getElementById('countdown').innerText = days > 0 ? `${days} Days To Go` : "Election Day!";
-        }
-        updateCountdown();
-    </script>
-</body>
-</html>
+                    <p>Today, I'm raising my children in Arlington.
