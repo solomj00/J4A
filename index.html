@@ -59,12 +59,12 @@
             cursor: pointer;
         }
 
-        .nav-links { display: flex; gap: 20px; list-style: none; }
+        .nav-links { display: flex; gap: 15px; list-style: none; }
 
         .nav-link {
             color: #ffffff;
             text-decoration: none;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 500;
             background: none;
             border: none;
@@ -74,11 +74,12 @@
             transition: 0.2s;
         }
 
-        .nav-link.active { background: rgba(255, 255, 255, 0.2); }
+        .nav-link.active, .nav-link:hover { background: rgba(255, 255, 255, 0.2); }
 
-        /* Content Layout */
-        .page { display: none; }
+        /* Page Content */
+        .page { display: none; animation: fadeIn 0.3s ease; }
         .page.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         .content-section {
             max-width: var(--container-width);
@@ -86,29 +87,21 @@
             padding: 40px 20px;
         }
 
-        .hero-image img {
-            width: 100%;
-            border-radius: var(--radius-lg);
-            margin-bottom: 30px;
-            box-shadow: var(--shadow-lg);
-        }
+        .section-header { text-align: center; margin-bottom: 40px; }
+        .section-title { font-size: 36px; margin-bottom: 10px; color: var(--accent-burgundy); }
 
+        /* Narrative & Boxes */
         .narrative-box {
             background: var(--bg-secondary);
             padding: 40px;
             border-radius: var(--radius-md);
             box-shadow: var(--shadow);
             margin-bottom: 40px;
-            color: var(--text-primary);
         }
 
-        .narrative-box p {
-            font-size: 19px;
-            margin-bottom: 20px;
-        }
+        .narrative-box p { font-size: 19px; margin-bottom: 20px; color: var(--text-secondary); }
 
-        /* Cards & Components */
-        .story-card {
+        .detail-section {
             background: var(--bg-secondary);
             border-radius: var(--radius-lg);
             padding: 40px;
@@ -116,30 +109,54 @@
             box-shadow: var(--shadow);
         }
 
-        .vote-reminder {
-            text-align: center;
-            border-top: 2px solid var(--border-color);
-            padding: 40px 0;
+        .detail-list { list-style: none; margin: 20px 0; }
+        .detail-list li { 
+            position: relative; 
+            padding-left: 30px; 
+            margin-bottom: 12px; 
+            color: var(--text-secondary);
+        }
+        .detail-list li::before { 
+            content: "✓"; 
+            position: absolute; 
+            left: 0; 
+            color: var(--accent-burgundy); 
+            font-weight: bold; 
         }
 
-        .vote-date {
-            font-size: 40px;
-            font-weight: 800;
-            color: var(--accent-burgundy);
-        }
-
-        /* Footer */
+        /* Footer & Socials */
         footer {
             background: var(--accent-burgundy);
             color: #ffffff;
-            padding: 40px 20px;
+            padding: 60px 20px 30px;
             text-align: center;
-            margin-top: 60px;
         }
 
-        footer a { color: white; text-decoration: underline; }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
 
-        .mobile-menu-toggle { display: none; background: none; border: none; color: white; }
+        .social-icon {
+            color: white;
+            transition: opacity 0.2s;
+        }
+
+        .social-icon:hover { opacity: 0.7; }
+
+        .footer-legal {
+            font-size: 14px;
+            opacity: 0.8;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .footer-legal a { color: white; margin: 0 10px; }
+
+        .mobile-menu-toggle { display: none; background: none; border: none; color: white; cursor: pointer; }
 
         @media (max-width: 768px) {
             .mobile-menu-toggle { display: block; }
@@ -150,6 +167,7 @@
                 background: var(--accent-burgundy);
                 flex-direction: column;
                 padding: 20px;
+                box-shadow: var(--shadow-lg);
             }
             .nav-links.open { display: flex; }
         }
@@ -160,15 +178,16 @@
     <header>
         <nav>
             <button class="logo" onclick="showPage('home')">Joe For Arlington</button>
-            <button class="mobile-menu-toggle" onclick="toggleMenu()">
+            <button class="mobile-menu-toggle" onclick="toggleMenu()" aria-label="Menu">
                 <i data-lucide="menu"></i>
             </button>
             <ul class="nav-links" id="navLinks">
                 <li><button class="nav-link active" onclick="showPage('home')">Home</button></li>
-                <li><button class="nav-link" onclick="showPage('about')">About Me</button></li>
+                <li><button class="nav-link" onclick="showPage('about')">About</button></li>
                 <li><button class="nav-link" onclick="showPage('values')">Values</button></li>
                 <li><button class="nav-link" onclick="showPage('experience')">Experience</button></li>
                 <li><button class="nav-link" onclick="showPage('supporters')">Supporters</button></li>
+                <li><button class="nav-link" style="font-weight: bold; border: 1px solid white;" onclick="showPage('donate')">Donate</button></li>
             </ul>
         </nav>
     </header>
@@ -184,20 +203,92 @@
                     <p><strong>Hi, I'm Joe and I'm running for Select Board!</strong></p>
                     <p>Arlington is more than just a zip code to me. It is the town that raised me, the community where I chose to build my life, and the place where I am now raising my own children. My connection to this town is not just sentimental; it is practical and deeply rooted.</p>
                     <p>I've navigated Arlington as a student in our public schools, as a homeowner, as a parent leading the Dallin PTO, as a son helping my family age in place, and as a member of town government.</p>
-                    <p>I am running for office because I want to ensure that Arlington remains a place of opportunity for every generation—from the students entering kindergarten to the seniors who have spent a lifetime building this community. My platform is built on the belief that with smart planning and experienced leadership, we can maintain what we love about Arlington while modernizing it for the future.</p>
+                    <p>I am running for office because I want to ensure that Arlington remains a place of opportunity for every generation—from the students entering kindergarten to the seniors who have spent a lifetime building this community.</p>
                 </div>
 
-                <div class="vote-reminder">
-                    <p>Election Day: March 28, 2026</p>
-                    <div id="countdown" class="vote-date">Calculating...</div>
-                    <p><a href="https://www.arlingtonma.gov/town-governance/elections-voting/" target="_blank" style="color: var(--accent-burgundy)">Voting Information</a></p>
+                <div style="text-align: center; padding: 40px 0; border-top: 2px solid var(--border-color);">
+                    <p style="font-size: 1.2rem; color: var(--accent-burgundy); font-weight: 600;">Election Day: March 28, 2026</p>
+                    <div id="countdown" style="font-size: 3rem; font-weight: 800; margin: 10px 0;">Calculating...</div>
                 </div>
             </div>
         </section>
 
-        <section id="about" class="page">
+        <section id="values" class="page">
             <div class="content-section">
-                <h1>About Me</h1>
-                <article class="story-card">
-                    <h3>Raising My Own Family</h3>
-                    <p>Today, I'm raising my children in Arlington.
+                <div class="section-header">
+                    <h2 class="section-title">My Values</h2>
+                    <p>The principles guiding every decision I make for Arlington.</p>
+                </div>
+                <div class="detail-section">
+                    <h3>Fiscal Responsibility</h3>
+                    <ul class="detail-list">
+                        <li>Belief in smart spending and long-term planning through Capital Planning experience.</li>
+                        <li>Focus on proactive maintenance over costly emergency repairs.</li>
+                        <li>Sustainable revenue through commercial growth to protect homeowners from tax burdens.</li>
+                    </ul>
+                    <h3>Community for All Generations</h3>
+                    <ul class="detail-list">
+                        <li>Arlington must work for students, families, and seniors alike.</li>
+                        <li>Supporting multi-generational living and housing diversity.</li>
+                        <li>Enabling seniors to age in place with dignity and accessibility.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://facebook.com/JoeForArlington" class="social-icon" target="_blank" aria-label="Facebook">
+                <i data-lucide="facebook"></i>
+            </a>
+            <a href="mailto:info@joeforarlington.com" class="social-icon" aria-label="Email">
+                <i data-lucide="mail"></i>
+            </a>
+        </div>
+        
+        <p><strong>Committee to Elect Joe Smith</strong></p>
+        <p>Arlington, MA 02474</p>
+        
+        <div class="footer-legal">
+            <p>Paid for by the Committee to Elect Joe Smith</p>
+            <div style="margin-top: 10px;">
+                <a href="#" onclick="showPage('privacy')">Privacy Policy</a> | 
+                <a href="https://www.arlingtonma.gov/town-governance/elections-voting/" target="_blank">Voter Info</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            const target = document.getElementById(pageId);
+            if(target) target.classList.add('active');
+            
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.toggle('active', link.innerText.toLowerCase().includes(pageId) || (pageId === 'home' && link.innerText === 'Home'));
+            });
+
+            document.getElementById('navLinks').classList.remove('open');
+            window.scrollTo(0,0);
+        }
+
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+
+        function updateCountdown() {
+            const electionDate = new Date('March 28, 2026').getTime();
+            const now = new Date().getTime();
+            const diff = electionDate - now;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const countEl = document.getElementById('countdown');
+            if(countEl) countEl.innerText = days > 0 ? `${days} Days To Go` : "Election Day!";
+        }
+        updateCountdown();
+    </script>
+</body>
+</html>
