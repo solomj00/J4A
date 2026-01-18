@@ -261,34 +261,44 @@
     </footer>
 
     <script>
-        lucide.createIcons();
-
-        function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            const target = document.getElementById(pageId);
-            if(target) target.classList.add('active');
-            
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.toggle('active', link.innerText.toLowerCase().includes(pageId) || (pageId === 'home' && link.innerText === 'Home'));
-            });
-
-            document.getElementById('navLinks').classList.remove('open');
-            window.scrollTo(0,0);
+       // 1. Wait for the page to be fully loaded before running
+window.addEventListener('load', function() {
+    
+    // 2. Initialize Icons Safely
+    try {
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
         }
+    } catch (e) {
+        console.log("Icons could not load, but the site will keep running.");
+    }
 
-        function toggleMenu() {
-            document.getElementById('navLinks').classList.toggle('open');
-        }
+    // 3. The Countdown Logic
+    function updateCountdown() {
+        const countEl = document.getElementById('countdown');
+        if (!countEl) return;
 
-        function updateCountdown() {
-            const electionDate = new Date('March 28, 2026').getTime();
-            const now = new Date().getTime();
-            const diff = electionDate - now;
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const countEl = document.getElementById('countdown');
-            if(countEl) countEl.innerText = days > 0 ? `${days} Days To Go` : "Election Day!";
+        // Use ISO format (YYYY-MM-DD) for iPad/Safari compatibility
+        const electionDate = new Date('2026-03-28T00:00:00').getTime();
+        const now = new Date().getTime();
+        const diff = electionDate - now;
+
+        // Math for days
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+        if (isNaN(days)) {
+            countEl.innerText = "March 28, 2026";
+        } else if (days > 0) {
+            countEl.innerText = days + " Days To Go";
+        } else if (days === 0) {
+            countEl.innerText = "Election Day!";
+        } else {
+            countEl.innerText = "Election Completed";
         }
-        updateCountdown();
+    }
+
+    updateCountdown();
+});
     </script>
 </body>
 </html>
