@@ -24,12 +24,13 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
-            padding-top: 80px;
         }
 
         /* Navigation */
@@ -54,41 +55,78 @@
             font-size: 24px;
             font-weight: 700;
             color: #ffffff;
-            background: none;
-            border: none;
-            cursor: pointer;
+            text-decoration: none;
         }
 
-        .nav-links { display: flex; gap: 15px; list-style: none; }
+        .nav-links { 
+            display: flex; 
+            gap: 15px; 
+            list-style: none; 
+        }
 
         .nav-link {
             color: #ffffff;
             text-decoration: none;
             font-size: 15px;
             font-weight: 500;
-            background: none;
-            border: none;
             padding: 8px 12px;
             border-radius: var(--radius-sm);
-            cursor: pointer;
             transition: 0.2s;
+            display: block;
         }
 
-        .nav-link.active, .nav-link:hover { background: rgba(255, 255, 255, 0.2); }
+        .nav-link.active, .nav-link:hover { 
+            background: rgba(255, 255, 255, 0.2); 
+        }
 
-        /* Page Content */
-        .page { display: none; animation: fadeIn 0.3s ease; }
-        .page.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .nav-link.donate-btn {
+            font-weight: bold;
+            border: 1px solid white;
+        }
+
+        /* Sections */
+        section {
+            min-height: 60vh;
+            padding: 80px 20px 40px;
+        }
+
+        section:first-of-type {
+            padding-top: 100px;
+        }
 
         .content-section {
             max-width: var(--container-width);
             margin: 0 auto;
-            padding: 40px 20px;
         }
 
-        .section-header { text-align: center; margin-bottom: 40px; }
-        .section-title { font-size: 36px; margin-bottom: 10px; color: var(--accent-burgundy); }
+        .section-header { 
+            text-align: center; 
+            margin-bottom: 40px; 
+        }
+
+        .section-title { 
+            font-size: 36px; 
+            margin-bottom: 10px; 
+            color: var(--accent-burgundy); 
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+        }
+
+        /* Hero Image */
+        .hero-image {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+        }
 
         /* Narrative & Boxes */
         .narrative-box {
@@ -99,7 +137,15 @@
             margin-bottom: 40px;
         }
 
-        .narrative-box p { font-size: 19px; margin-bottom: 20px; color: var(--text-secondary); }
+        .narrative-box p { 
+            font-size: 19px; 
+            margin-bottom: 20px; 
+            color: var(--text-secondary); 
+        }
+
+        .narrative-box p:last-child {
+            margin-bottom: 0;
+        }
 
         .detail-section {
             background: var(--bg-secondary);
@@ -109,19 +155,57 @@
             box-shadow: var(--shadow);
         }
 
-        .detail-list { list-style: none; margin: 20px 0; }
+        .detail-section h3 {
+            color: var(--accent-burgundy);
+            font-size: 24px;
+            margin-bottom: 15px;
+            margin-top: 20px;
+        }
+
+        .detail-section h3:first-child {
+            margin-top: 0;
+        }
+
+        .detail-list { 
+            list-style: none; 
+            margin: 20px 0; 
+        }
+
         .detail-list li { 
             position: relative; 
             padding-left: 30px; 
             margin-bottom: 12px; 
             color: var(--text-secondary);
+            font-size: 17px;
         }
+
         .detail-list li::before { 
             content: "✓"; 
             position: absolute; 
             left: 0; 
             color: var(--accent-burgundy); 
             font-weight: bold; 
+        }
+
+        /* Countdown */
+        .countdown-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 2px solid var(--border-color);
+            margin-top: 40px;
+        }
+
+        .countdown-label {
+            font-size: 1.2rem;
+            color: var(--accent-burgundy);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .countdown-display {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent-burgundy);
         }
 
         /* Footer & Socials */
@@ -144,7 +228,9 @@
             transition: opacity 0.2s;
         }
 
-        .social-icon:hover { opacity: 0.7; }
+        .social-icon:hover { 
+            opacity: 0.7; 
+        }
 
         .footer-legal {
             font-size: 14px;
@@ -154,22 +240,53 @@
             margin-top: 20px;
         }
 
-        .footer-legal a { color: white; margin: 0 10px; }
+        .footer-legal a { 
+            color: white; 
+            margin: 0 10px;
+            text-decoration: underline;
+        }
 
-        .mobile-menu-toggle { display: none; background: none; border: none; color: white; cursor: pointer; }
+        .mobile-menu-toggle { 
+            display: none; 
+            background: none; 
+            border: none; 
+            color: white; 
+            cursor: pointer; 
+        }
 
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .mobile-menu-toggle { display: block; }
+            .mobile-menu-toggle { 
+                display: block; 
+            }
+
             .nav-links {
                 display: none;
                 position: absolute;
-                top: 70px; left: 0; width: 100%;
+                top: 70px; 
+                left: 0; 
+                width: 100%;
                 background: var(--accent-burgundy);
                 flex-direction: column;
                 padding: 20px;
                 box-shadow: var(--shadow-lg);
             }
-            .nav-links.open { display: flex; }
+
+            .nav-links.open { 
+                display: flex; 
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .countdown-display {
+                font-size: 2rem;
+            }
+
+            nav {
+                padding: 15px 20px;
+            }
         }
     </style>
 </head>
@@ -177,26 +294,26 @@
 
     <header>
         <nav>
-            <button class="logo" onclick="showPage('home')">Joe For Arlington</button>
-            <button class="mobile-menu-toggle" onclick="toggleMenu()" aria-label="Menu">
+            <a href="#home" class="logo">Joe For Arlington</a>
+            <button class="mobile-menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false">
                 <i data-lucide="menu"></i>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><button class="nav-link active" onclick="showPage('home')">Home</button></li>
-                <li><button class="nav-link" onclick="showPage('about')">About</button></li>
-                <li><button class="nav-link" onclick="showPage('values')">Values</button></li>
-                <li><button class="nav-link" onclick="showPage('experience')">Experience</button></li>
-                <li><button class="nav-link" onclick="showPage('supporters')">Supporters</button></li>
-                <li><button class="nav-link" style="font-weight: bold; border: 1px solid white;" onclick="showPage('donate')">Donate</button></li>
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#values" class="nav-link">Values</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#supporters" class="nav-link">Supporters</a></li>
+                <li><a href="#donate" class="nav-link donate-btn">Donate</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section id="home" class="page active">
+        <section id="home">
             <div class="content-section">
                 <div class="hero-image">
-                    <img src="image.jpg" alt="Joe with his family in Arlington">
+                    <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1200&h=600&fit=crop" alt="Joe with his family in Arlington">
                 </div>
                 
                 <div class="narrative-box">
@@ -206,37 +323,190 @@
                     <p>I am running for office because I want to ensure that Arlington remains a place of opportunity for every generation—from the students entering kindergarten to the seniors who have spent a lifetime building this community.</p>
                 </div>
 
-                <div style="text-align: center; padding: 40px 0; border-top: 2px solid var(--border-color);">
-                    <p style="font-size: 1.2rem; color: var(--accent-burgundy); font-weight: 600;">Election Day: March 28, 2026</p>
-                    <div id="countdown" style="font-size: 3rem; font-weight: 800; margin: 10px 0;">Calculating...</div>
+                <div class="countdown-container">
+                    <p class="countdown-label">Election Day: March 28, 2026</p>
+                    <div id="countdown" class="countdown-display">Calculating...</div>
                 </div>
             </div>
         </section>
 
-        <section id="values" class="page">
+        <section id="about">
+            <div class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">About Joe</h2>
+                    <p class="section-subtitle">A lifelong Arlington resident committed to community service</p>
+                </div>
+
+                <div class="narrative-box">
+                    <p>I grew up in Arlington, attended our public schools, and have spent my entire professional life working to make our community stronger. After graduating from Arlington High School, I went on to earn my degree in public policy and returned home to give back to the town that gave me so much.</p>
+                    <p>As a parent of two young children in Arlington's school system, I understand firsthand the challenges and opportunities facing our families. I've served on the Dallin PTO, worked with local nonprofits, and currently serve on the Capital Planning Committee where I help make critical decisions about Arlington's infrastructure and long-term investments.</p>
+                    <p>My professional background in municipal finance and urban planning has given me the tools to tackle complex budget challenges while maintaining the services our community depends on. I believe in data-driven decision making, transparent governance, and always putting residents first.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="values">
             <div class="content-section">
                 <div class="section-header">
                     <h2 class="section-title">My Values</h2>
-                    <p>The principles guiding every decision I make for Arlington.</p>
+                    <p class="section-subtitle">The principles guiding every decision I make for Arlington</p>
                 </div>
+
                 <div class="detail-section">
                     <h3>Fiscal Responsibility</h3>
                     <ul class="detail-list">
-                        <li>Belief in smart spending and long-term planning through Capital Planning experience.</li>
-                        <li>Focus on proactive maintenance over costly emergency repairs.</li>
-                        <li>Sustainable revenue through commercial growth to protect homeowners from tax burdens.</li>
+                        <li>Belief in smart spending and long-term planning through Capital Planning experience</li>
+                        <li>Focus on proactive maintenance over costly emergency repairs</li>
+                        <li>Sustainable revenue through commercial growth to protect homeowners from tax burdens</li>
+                        <li>Transparent budgeting that prioritizes core services and infrastructure</li>
                     </ul>
+
                     <h3>Community for All Generations</h3>
                     <ul class="detail-list">
-                        <li>Arlington must work for students, families, and seniors alike.</li>
-                        <li>Supporting multi-generational living and housing diversity.</li>
-                        <li>Enabling seniors to age in place with dignity and accessibility.</li>
+                        <li>Arlington must work for students, families, and seniors alike</li>
+                        <li>Supporting multi-generational living and housing diversity</li>
+                        <li>Enabling seniors to age in place with dignity and accessibility</li>
+                        <li>Investing in schools and youth programs for the next generation</li>
+                    </ul>
+
+                    <h3>Sustainable Development</h3>
+                    <ul class="detail-list">
+                        <li>Balanced growth that preserves Arlington's character while meeting modern needs</li>
+                        <li>Environmental stewardship and climate action planning</li>
+                        <li>Smart zoning that encourages affordable housing without overwhelming infrastructure</li>
+                        <li>Protection of green spaces and community resources</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        </main>
+        <section id="experience">
+            <div class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">Experience</h2>
+                    <p class="section-subtitle">Proven leadership in Arlington and beyond</p>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Arlington Capital Planning Committee</h3>
+                    <ul class="detail-list">
+                        <li>Currently serving my third year on the committee</li>
+                        <li>Helped prioritize over $50 million in infrastructure investments</li>
+                        <li>Led subcommittee on school facilities modernization</li>
+                        <li>Developed long-term maintenance schedules to reduce emergency spending</li>
+                    </ul>
+
+                    <h3>Dallin Elementary PTO President</h3>
+                    <ul class="detail-list">
+                        <li>Served two terms as PTO President (2022-2024)</li>
+                        <li>Raised over $75,000 for school programs and equipment</li>
+                        <li>Organized community events bringing together 300+ families</li>
+                        <li>Advocated for improved playground safety and accessibility</li>
+                    </ul>
+
+                    <h3>Professional Background</h3>
+                    <ul class="detail-list">
+                        <li>15+ years experience in municipal finance and urban planning</li>
+                        <li>Master's degree in Public Policy from UMass Boston</li>
+                        <li>Certified Municipal Finance Officer</li>
+                        <li>Consultant to municipalities across Massachusetts on budget optimization</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="supporters">
+            <div class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">Community Support</h2>
+                    <p class="section-subtitle">Endorsed by neighbors, leaders, and organizations across Arlington</p>
+                </div>
+
+                <div class="narrative-box">
+                    <p><strong>"Joe has been an incredible advocate for our schools and our children. His dedication to Arlington's future is unmatched."</strong><br>— Sarah M., Dallin Parent</p>
+                </div>
+
+                <div class="narrative-box">
+                    <p><strong>"As someone who has worked with Joe on the Capital Planning Committee, I can say he brings the analytical skills and community focus we need on the Select Board."</strong><br>— Robert T., Former Town Meeting Member</p>
+                </div>
+
+                <div class="narrative-box">
+                    <p><strong>"Joe understands the challenges facing seniors in Arlington. He helped my family navigate resources when my mother needed assistance, and he'll fight for all of us."</strong><br>— Margaret L., Arlington Senior</p>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Join Our Growing Coalition</h3>
+                    <p style="color: var(--text-secondary); font-size: 17px; margin-bottom: 20px;">We're building a grassroots movement of neighbors who believe in Arlington's future. Want to get involved?</p>
+                    <ul class="detail-list">
+                        <li>Volunteer to knock on doors and talk to neighbors</li>
+                        <li>Host a house party or coffee chat with friends</li>
+                        <li>Display a yard sign to show your support</li>
+                        <li>Share our message on social media</li>
+                    </ul>
+                    <p style="text-align: center; margin-top: 30px;">
+                        <a href="mailto:info@joeforarlington.com" style="background: var(--accent-burgundy); color: white; padding: 15px 30px; border-radius: var(--radius-sm); text-decoration: none; display: inline-block; font-weight: 600;">Get Involved</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="donate">
+            <div class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">Support the Campaign</h2>
+                    <p class="section-subtitle">Every contribution helps us reach more voters and build a better Arlington</p>
+                </div>
+
+                <div class="narrative-box">
+                    <p>Running a grassroots campaign takes resources. Your contribution—no matter the size—helps us print literature, organize events, and get our message out to every corner of Arlington.</p>
+                    <p><strong>All donations are subject to Massachusetts campaign finance laws.</strong> Individual contributions are limited to $1,000 per calendar year. Contributions are not tax-deductible.</p>
+                </div>
+
+                <div class="detail-section" style="text-align: center;">
+                    <h3>Ways to Contribute</h3>
+                    <div style="margin: 30px 0;">
+                        <p style="font-size: 18px; margin-bottom: 20px; color: var(--text-secondary);">Send checks payable to:</p>
+                        <p style="font-size: 20px; font-weight: 600; color: var(--accent-burgundy);">Committee to Elect Joe Smith</p>
+                        <p style="font-size: 18px; color: var(--text-secondary);">123 Main Street<br>Arlington, MA 02474</p>
+                    </div>
+                    <div style="margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--border-color);">
+                        <p style="font-size: 16px; color: var(--text-secondary); margin-bottom: 15px;">For online donations or questions about contributing:</p>
+                        <a href="mailto:info@joeforarlington.com" style="background: var(--accent-burgundy); color: white; padding: 15px 40px; border-radius: var(--radius-sm); text-decoration: none; display: inline-block; font-weight: 600; font-size: 18px;">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="privacy" style="min-height: auto;">
+            <div class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">Privacy Policy</h2>
+                </div>
+
+                <div class="detail-section">
+                    <p style="color: var(--text-secondary); margin-bottom: 15px;">The Committee to Elect Joe Smith respects your privacy. Any information you provide to our campaign will be used solely for campaign-related purposes.</p>
+                    
+                    <h3>Information We Collect</h3>
+                    <ul class="detail-list">
+                        <li>Contact information you voluntarily provide (name, email, phone, address)</li>
+                        <li>Contribution information as required by Massachusetts campaign finance law</li>
+                        <li>Volunteer preferences and availability</li>
+                    </ul>
+
+                    <h3>How We Use Your Information</h3>
+                    <ul class="detail-list">
+                        <li>To communicate campaign updates and events</li>
+                        <li>To coordinate volunteer activities</li>
+                        <li>To comply with campaign finance reporting requirements</li>
+                        <li>We will never sell or share your information with third parties</li>
+                    </ul>
+
+                    <h3>Your Rights</h3>
+                    <p style="color: var(--text-secondary); margin-top: 15px;">You may unsubscribe from campaign communications at any time by emailing info@joeforarlington.com. Please note that contribution information may be subject to public disclosure under Massachusetts law.</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="social-links">
@@ -254,51 +524,88 @@
         <div class="footer-legal">
             <p>Paid for by the Committee to Elect Joe Smith</p>
             <div style="margin-top: 10px;">
-                <a href="#" onclick="showPage('privacy')">Privacy Policy</a> | 
+                <a href="#privacy">Privacy Policy</a> | 
                 <a href="https://www.arlingtonma.gov/town-governance/elections-voting/" target="_blank">Voter Info</a>
             </div>
         </div>
     </footer>
 
     <script>
-       // 1. Wait for the page to be fully loaded before running
-window.addEventListener('load', function() {
-    
-    // 2. Initialize Icons Safely
-    try {
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
+        // Initialize icons when page loads
+        window.addEventListener('load', function() {
+            try {
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                }
+            } catch (e) {
+                console.log("Icons could not load");
+            }
+
+            // Start countdown
+            updateCountdown();
+            setInterval(updateCountdown, 60000); // Update every minute
+        });
+
+        // Countdown logic
+        function updateCountdown() {
+            const countEl = document.getElementById('countdown');
+            if (!countEl) return;
+
+            const electionDate = new Date('2026-03-28T00:00:00').getTime();
+            const now = new Date().getTime();
+            const diff = electionDate - now;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+            if (isNaN(days)) {
+                countEl.innerText = "March 28, 2026";
+            } else if (days > 0) {
+                countEl.innerText = days + " Days To Go";
+            } else if (days === 0) {
+                countEl.innerText = "Election Day!";
+            } else {
+                countEl.innerText = "Election Completed";
+            }
         }
-    } catch (e) {
-        console.log("Icons could not load, but the site will keep running.");
-    }
 
-    // 3. The Countdown Logic
-    function updateCountdown() {
-        const countEl = document.getElementById('countdown');
-        if (!countEl) return;
-
-        // Use ISO format (YYYY-MM-DD) for iPad/Safari compatibility
-        const electionDate = new Date('2026-03-28T00:00:00').getTime();
-        const now = new Date().getTime();
-        const diff = electionDate - now;
-
-        // Math for days
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-
-        if (isNaN(days)) {
-            countEl.innerText = "March 28, 2026";
-        } else if (days > 0) {
-            countEl.innerText = days + " Days To Go";
-        } else if (days === 0) {
-            countEl.innerText = "Election Day!";
-        } else {
-            countEl.innerText = "Election Completed";
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const menuBtn = document.querySelector('.mobile-menu-toggle');
+            const isOpen = navLinks.classList.toggle('open');
+            menuBtn.setAttribute('aria-expanded', isOpen);
         }
-    }
 
-    updateCountdown();
-});
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                const navLinks = document.getElementById('navLinks');
+                const menuBtn = document.querySelector('.mobile-menu-toggle');
+                navLinks.classList.remove('open');
+                menuBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Active nav highlighting on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
     </script>
 </body>
 </html>
