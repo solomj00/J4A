@@ -116,13 +116,25 @@
         }
 
         /* Hero Image */
-        .hero-image {
-            text-align: center;
+        .hero-container {
+            display: flex;
+            gap: 40px;
+            align-items: center;
             margin-bottom: 40px;
         }
 
+        .hero-image {
+            flex: 0 0 45%;
+            order: 2;
+        }
+
+        .hero-text {
+            flex: 1;
+            order: 1;
+        }
+
         .hero-image img {
-            max-width: 100%;
+            width: 100%;
             height: auto;
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-lg);
@@ -389,6 +401,21 @@
             nav {
                 padding: 15px 20px;
             }
+
+            /* Mobile hero layout - image first, then text */
+            .hero-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .hero-image {
+                order: 1;
+                flex: 1;
+            }
+
+            .hero-text {
+                order: 2;
+            }
         }
     </style>
 </head>
@@ -417,15 +444,18 @@
     <main id="main-content">
         <section id="home">
             <div class="content-section">
-                <div class="hero-image">
-                    <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1200&h=600&fit=crop" alt="A happy family of four standing together outdoors, representing community and family values">
-                </div>
-                
-                <div class="narrative-box">
-                    <p><strong>Hi, I'm Joe and I'm running for Select Board!</strong></p>
-                    <p>Arlington is more than just a zip code to me. It is the town that raised me, the community where I chose to build my life, and the place where I am now raising my own children. My connection to this town is not just sentimental; it is practical and deeply rooted.</p>
-                    <p>I've navigated Arlington as a student in our public schools, as a homeowner, as a parent leading the Dallin PTO, as a son helping my family age in place, and as a member of town government.</p>
-                    <p>I am running for office because I want to ensure that Arlington remains a place of opportunity for every generation—from the students entering kindergarten to the seniors who have spent a lifetime building this community.</p>
+                <div class="hero-container">
+                    <div class="hero-text">
+                        <div class="narrative-box">
+                            <p><strong>Hi, I'm Joe and I'm running for Select Board!</strong></p>
+                            <p>Arlington is my home. It shaped who I am, and it is where I am raising my family today. I have experienced this town from every angle, as a student in our public schools, a homeowner, a parent and PTO leader at Dallin, a son helping my family age in place, and a member of town government working to make Arlington run better.</p>
+                            <p>I am running for office to make sure Arlington continues to work for everyone. For families just starting out, for students finding their path, and for seniors who built this community and deserve to stay in it. With thoughtful planning and proven leadership, we can protect what makes Arlington special and prepare it for the future we owe the next generation.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1200&h=600&fit=crop" alt="A happy family of four standing together outdoors, representing community and family values">
+                    </div>
                 </div>
 
                 <div class="countdown-container">
