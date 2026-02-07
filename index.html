@@ -24,13 +24,19 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        html { 
+            scroll-behavior: smooth; 
+            scroll-padding-top: 80px;
+            overflow-x: hidden;
+        }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
+            overflow-x: hidden;
+            width: 100%;
         }
 
         /* Navigation */
@@ -88,6 +94,7 @@
         section {
             min-height: 60vh;
             padding: 80px 20px 40px;
+            overflow-x: hidden;
         }
 
         section:first-of-type {
@@ -97,6 +104,7 @@
         .content-section {
             max-width: var(--container-width);
             margin: 0 auto;
+            overflow-x: hidden;
         }
 
         .section-header { 
@@ -121,6 +129,7 @@
             gap: 40px;
             align-items: center;
             margin-bottom: 40px;
+            max-width: 100%;
         }
 
         .hero-image {
@@ -373,6 +382,13 @@
             min-width: 44px;
             min-height: 44px;
             padding: 8px;
+            font-size: 24px;
+        }
+
+        .mobile-menu-toggle svg {
+            width: 28px;
+            height: 28px;
+            stroke-width: 2.5;
         }
 
         /* Enhanced Focus States for Accessibility */
@@ -471,6 +487,14 @@
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
+            body {
+                overflow-x: hidden;
+            }
+
+            .logo {
+                font-size: 18px;
+            }
+
             .mobile-menu-toggle { 
                 display: block; 
             }
@@ -507,15 +531,32 @@
             .hero-container {
                 flex-direction: column;
                 gap: 30px;
+                width: 100%;
+                max-width: 100%;
             }
 
             .hero-image {
                 order: 1;
                 flex: 1;
+                width: 100%;
+                max-width: 100%;
             }
 
             .hero-text {
                 order: 2;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .narrative-box,
+            .detail-section {
+                padding: 25px;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            section {
+                padding: 80px 15px 40px;
             }
         }
     </style>
@@ -549,8 +590,8 @@
                         <div class="narrative-box">
                             <p><strong>Hi, I'm Joe and I'm running for Select Board!</strong></p>
                             <p>Arlington is my home. It shaped who I am, and it is where I am raising my family today. I have experienced this town from many angles, as a student, a parent, a son of senior parents, and a member of town government.</p>
-                            <p>I've worked at federal and state agencies as well as private companies with a focus on improving services in ways that that people can see, measure, and trust.  This experience gives me a unique ability to partner with other Select Board members and the Town Manager to lead Arlington toward the future.  I believe in data-driven decision making, transparent governance, and always putting residents first.</p>
-                            <p>I am running for Select Board to make sure Arlington continues to work for everyone. For families just starting out, for the youth finding their path, and for folks who built this community and deserve to stay in it. With thoughtful, resident-informed planning and engaged leadership, we can enhance what makes Arlington special and prepare it for the next generation.</p>
+                            <p>My professional background includes work at public agencies and private companies with a focus on producing results that people can see, measure, and trust.  This experience gives me a unique ability to partner with other Select Board members and the Town Manager to prepare for our future.  I believe in data-driven decision making, transparent governance, and always putting residents first.</p>
+                            <p>I am running for office to make sure Arlington continues to work for everyone. For families just starting out, for the youth finding their path, and for folks who built this community and deserve to stay in it. With thoughtful planning and decisive leadership, we can enhance what makes Arlington special and prepare it for the future we owe the next generation.</p>
                         </div>
                     </div>
                     
@@ -569,16 +610,16 @@
 
                 <div class="detail-section">
                     <h3>Safe Streets</h3>
-                    <p style="color: var(--text-secondary); font-size: 17px; margin-bottom: 15px;">Everyone deserves to get where they're going safely, whether driving, walking, or biking. Through my work on the Park Ave Safety Study and volunteer work with Everywhere Arlington Liveable Streets, I advocate for solutions to longstanding safety issues.  On the Select Board, I'll work to adopt a Vision Zero policy for Arlington and a proactive quick-build approach to improvements.</p>
+                    <p style="color: var(--text-secondary); font-size: 17px; margin-bottom: 15px;">Everyone deserves to get where they're going safely, whether driving, walking, or biking. Through my work on the Park Ave Safety Study, I advocate for a Vision Zero approach that actively designs streets to reduce accidents. I support proactive maintenance schedules for roads and sidewalks, and a clear roadmap for repairing and enhancing the Minuteman Bikeway. Smart maintenance now saves money later and keeps our town accessible for residents of all abilities.</p>
 
                     <h3>Excellence in Education</h3>
                     <p style="color: var(--text-secondary); font-size: 17px; margin-bottom: 15px;">Our schools are Arlington's foundation. They served me well as a student and are serving my children well today. That reputation requires sustained investment and community support. I'm committed to supporting our students and teachers by ensuring they have the resources they need to succeed.  In order to do this, I'm voting yes on the Override being put before the voters on March 28th</p>
 
                     <h3>Housing for Every Generation</h3>
-                    <p style="color: var(--text-secondary); font-size: 17px; margin-bottom: 15px;">Arlington should be home for every stage of life. I've lived this value personally—building an accessory dwelling unit for my mother's safe, single-level living, and helping my mother-in-law purchase a condo in an older multi-family building so she could be closer to her grandchildren. Multi-generational living has enriched my family, and I want Arlington to provide others that same opportunity. These options allow seniors to downsize without leaving the community they love and give the next generation a foothold in our town.</p>
+                    <p style="color: var(--text-secondary); font-size: 17px; margin-bottom: 15px;">Arlington should be home for every stage of life. I've lived this value personally—building an accessory dwelling unit for my mother's safe, single-level living, and purchasing a condo in an older multi-family building so my mother-in-law could be closer to her grandchildren. Multi-generational living has enriched my family, and I want Arlington to give others that same opportunity. These options allow seniors to downsize without leaving the community they love and give the next generation a foothold in our town.</p>
 
-                    <h3>Sustainable Growth</h3>
-                    <p style="color: var(--text-secondary); font-size: 17px; margin-bottom: 15px;">Smart, well-planned development is essential to Arlington’s long-term financial health and quality of life. I support strategic development along our key corridors to strengthen business districts, expand mixed-use housing, and diversify our tax base. New commercial growth generates much-needed revenue, helping fund schools, roads, parks, and town services while creating more vibrant places to live, work, shop, and dine locally. Thoughtful development allows us to meet community needs today while planning responsibly for the future.</p>
+                    <h3>Sustainable Growth & Fiscal Responsibility</h3>
+                    <p style="color: var(--text-secondary); font-size: 17px; margin-bottom: 15px;">Smart commercial growth protects homeowners and funds the services we value. I support strategic development along Massachusetts Avenue and Broadway to diversify our tax base. By increasing commercial revenue, we reduce the burden on residential property taxes while ensuring we have the resources to maintain our roads, parks, and schools without constantly asking residents for more.</p>
                 </div>
             </div>
         </section>
@@ -604,13 +645,6 @@
                         <li>Recruited and organized parent volunteers to strengthen school and neighborhood community.</li>
                     </ul>
 
-                    <h3>Organizer, Park Avenue Safety Improvements</h3>
-                    <ul class="detail-list">
-                        <li>Collaborated with neighbors and local leaders to organize a petition to the Select Board.</li>
-                        <li>Authored and delivered a presentation (link) to the Select Board to build consensus around addressing this longstanding safety issue.</li>
-                        <li>Resulted in on-going design work and short-term safety improvements along the corridor.</li>
-                    </ul>
-                    
                     <h3>Professional Experience</h3>
                     <ul class="detail-list">
                         <li>Over 20 years of experience driving operational improvements in both the public and private sectors.</li>
