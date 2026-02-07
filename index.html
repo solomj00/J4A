@@ -124,13 +124,14 @@
         }
 
         .hero-image {
-            flex: 0 0 45%;
+            flex: 0 0 38%;
             order: 2;
         }
 
         .hero-text {
             flex: 1;
             order: 1;
+            flex: 0 0 60%;
         }
 
         .hero-image img {
@@ -218,6 +219,106 @@
             font-size: 3rem;
             font-weight: 800;
             color: var(--accent-burgundy);
+        }
+
+        /* Countdown */
+        .countdown-container {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 2px solid var(--border-color);
+            margin-top: 40px;
+        }
+
+        .countdown-label {
+            font-size: 1.2rem;
+            color: var(--accent-burgundy);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .countdown-display {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent-burgundy);
+        }
+
+        /* Contact Form Styles */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--accent-burgundy);
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"] {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            font-size: 16px;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus {
+            outline: none;
+            border-color: var(--accent-burgundy);
+        }
+
+        .checkbox-group {
+            margin: 25px 0;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            cursor: pointer;
+            font-size: 17px;
+            color: var(--text-secondary);
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            cursor: pointer;
+            accent-color: var(--accent-burgundy);
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 15px 30px;
+            background: var(--accent-burgundy);
+            color: white;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .submit-button:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .submit-button:active {
+            transform: translateY(0);
         }
 
         /* Footer & Socials */
@@ -432,7 +533,6 @@
             </button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#values" class="nav-link">Values</a></li>
                 <li><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#supporters" class="nav-link">Supporters</a></li>
@@ -458,30 +558,6 @@
                         <img src="about_photo.JPG" alt="A photo of the candidate and his family.">
                     </div>
                 </div>
-
-                <div class="countdown-container">
-                    <p class="countdown-label">Election Day: March 28, 2026</p>
-                    <div id="countdown" class="countdown-display" aria-live="polite" aria-atomic="true">Calculating...</div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about">
-            <div class="content-section">
-                <div class="section-header">
-                    <h2 class="section-title">About Joe</h2>
-                    <p class="section-subtitle">A lifelong Arlington resident committed to community service</p>
-                </div>
-
-                <div class="narrative-box">
-                    <p>I grew up in Arlington, attended our public schools, and after pursuing my education, returned home to give back to the town that gave me so much.</p>
-                    <ul class="detail-list" style="margin-top: 20px;">
-                        <li><strong>Town Meeting Member, Precinct 16</strong></li>
-                        <li><strong>Vice Chair, Capital Planning Committee</strong></li>
-                        <li><strong>PTO President, Dallin Elementary (2022-2024)</strong></li>
-                    </ul>
-                    <p style="margin-top: 20px;">My professional background includes work at public agencies and private companies with a focus on producing results that people can see, measure, and trust. This experience gives me a unique ability to partner with other Select Board members and the Town Manager to prepare for our future. I believe in data-driven decision making, transparent governance, and always putting residents first.</p>
-                </div>
             </div>
         </section>
 
@@ -489,7 +565,6 @@
             <div class="content-section">
                 <div class="section-header">
                     <h2 class="section-title">My Values</h2>
-                    <p class="section-subtitle">The principles guiding every decision I make for Arlington</p>
                 </div>
 
                 <div class="detail-section">
@@ -560,16 +635,33 @@
 
                 <div class="detail-section">
                     <h3>Stay In Touch!</h3>
-                    <p style="color: var(--text-secondary); font-size: 17px; margin-bottom: 20px;">We're glad you're here and want to stay in touch with neighbors who believe in Arlington's future. Want to get involved?</p>
-                    <ul class="detail-list">
-                        <li>Volunteer to knock on doors and talk to neighbors</li>
-                        <li>Host a house party or coffee chat with friends</li>
-                        <li>Display a yard sign to show your support</li>
-                        <li>Share our message on social media</li>
-                    </ul>
-                    <p style="text-align: center; margin-top: 30px;">
-                        <a href="mailto:info@joeforarlington.com" class="cta-button">Get Involved</a>
-                    </p>
+                    <p style="color: var(--text-secondary); font-size: 17px; margin-bottom: 30px; text-align: center;">We're glad you're here and want to stay in touch with neighbors who believe in Arlington's future.</p>
+                    
+                    <form class="contact-form" onsubmit="handleFormSubmit(event)">
+                        <div class="form-group">
+                            <label for="contact-name">Name *</label>
+                            <input type="text" id="contact-name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contact-email">Email *</label>
+                            <input type="email" id="contact-email" name="email" required>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="email-list" id="email-list">
+                                <span>Add me to your email list</span>
+                            </label>
+                            
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="host-coffee" id="host-coffee">
+                                <span>I'm interested in hosting a coffee for the campaign</span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="submit-button">Submit</button>
+                    </form>
                 </div>
             </div>
         </section>
@@ -633,31 +725,33 @@
             } catch (e) {
                 console.log("Icons could not load");
             }
-
-            // Start countdown
-            updateCountdown();
-            setInterval(updateCountdown, 60000); // Update every minute
         });
 
-        // Countdown logic
-        function updateCountdown() {
-            const countEl = document.getElementById('countdown');
-            if (!countEl) return;
-
-            const electionDate = new Date('2026-03-28T00:00:00').getTime();
-            const now = new Date().getTime();
-            const diff = electionDate - now;
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-
-            if (isNaN(days)) {
-                countEl.innerText = "March 28, 2026";
-            } else if (days > 0) {
-                countEl.innerText = days + " Days To Go";
-            } else if (days === 0) {
-                countEl.innerText = "Election Day!";
-            } else {
-                countEl.innerText = "Election Completed";
+        // Handle contact form submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('contact-name').value;
+            const email = document.getElementById('contact-email').value;
+            const emailList = document.getElementById('email-list').checked;
+            const hostCoffee = document.getElementById('host-coffee').checked;
+            
+            if (!emailList && !hostCoffee) {
+                alert('Please select at least one option.');
+                return;
             }
+            
+            let message = `Thank you ${name}! We've received your information.`;
+            if (emailList && hostCoffee) {
+                message += " You'll be added to our email list and we'll be in touch about hosting a coffee.";
+            } else if (emailList) {
+                message += " You'll be added to our email list.";
+            } else if (hostCoffee) {
+                message += " We'll be in touch about hosting a coffee.";
+            }
+            
+            alert(message);
+            event.target.reset();
         }
 
         // Mobile menu toggle
