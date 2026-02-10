@@ -135,6 +135,7 @@
         .hero-image {
             flex: 0 0 38%;
             order: 2;
+            overflow: hidden;
         }
 
         .hero-text {
@@ -145,9 +146,12 @@
 
         .hero-image img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-lg);
+            display: block;
         }
 
         /* Narrative & Boxes */
@@ -729,6 +733,7 @@
             </div>
         </section>
 
+        <!-- DONATE SECTION - COMMENTED OUT
         <section id="donate">
             <div class="content-section">
                 <div class="section-header">
@@ -763,6 +768,7 @@
                 </div>
             </div>
         </section>
+        END DONATE SECTION -->
     </main>
 
     <footer role="contentinfo">
