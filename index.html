@@ -6,9 +6,7 @@
     <title>Joe For Arlington - A Better Arlington for Every Generation</title>
     <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --bg-primary: #ffffff;
@@ -35,7 +33,7 @@
         }
 
         body {
-            font-family: 'Source Serif 4', Georgia, serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
@@ -62,8 +60,7 @@
         }
 
         .logo {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 700;
             color: #ffffff;
             text-decoration: none;
@@ -120,7 +117,6 @@
         }
 
         .section-title { 
-            font-family: 'Playfair Display', Georgia, serif;
             font-size: 36px; 
             margin-bottom: 10px; 
             color: var(--accent-burgundy); 
@@ -190,7 +186,6 @@
         }
 
         .detail-section h3 {
-            font-family: 'Playfair Display', Georgia, serif;
             color: var(--accent-burgundy);
             font-size: 24px;
             margin-bottom: 15px;
@@ -258,7 +253,6 @@
             position: absolute;
             right: 20px;
             top: 8px;
-            font-family: 'Playfair Display', Georgia, serif;
             font-size: 80px;
             line-height: 1;
             color: rgba(255,255,255,0.15);
@@ -266,7 +260,6 @@
         }
 
         .testimonial-name {
-            font-family: 'Playfair Display', Georgia, serif;
             font-size: 20px;
             font-weight: 700;
             color: #fff;
@@ -740,16 +733,6 @@
                         </div>
                     </article>
 
-                    <article class="testimonial-card" aria-label="Endorsement from Eric Helmuth">
-                        <div class="testimonial-header">
-                            <span class="testimonial-name">Eric Helmuth</span>
-                            <span class="testimonial-role">Select Board Member</span>
-                        </div>
-                        <div class="testimonial-body">
-                            <p>"Joe is a smart, collaborative leader who gets results the right way. I was impressed with how he led a successful neighborhood effort to advocate for street safety improvements by asking questions, doing his homework, and empowering his neighbors to be heard. As a Select Board member, Joe will bring these skills to the wider range of challenges facing Arlington."</p>
-                        </div>
-                    </article>
-
                     <article class="testimonial-card" aria-label="Endorsement from Leah Lyman Waldron">
                         <div class="testimonial-header">
                             <span class="testimonial-name">Leah Lyman Waldron</span>
@@ -760,13 +743,13 @@
                         </div>
                     </article>
 
-                    <article class="testimonial-card" aria-label="Endorsement from Adam Auster">
+                    <article class="testimonial-card" aria-label="Endorsement from Eric Helmuth">
                         <div class="testimonial-header">
-                            <span class="testimonial-name">Adam Auster</span>
-                            <span class="testimonial-role">Town Meeting Member, Precinct 16</span>
+                            <span class="testimonial-name">Eric Helmuth</span>
+                            <span class="testimonial-role">Select Board Member</span>
                         </div>
                         <div class="testimonial-body">
-                            <p>"Joe has been a consistent, pragmatic advocate for street safety, as an individual and an active member of the Everywhere Arlington Livable Streets Coalition."</p>
+                            <p>"Joe is a smart, collaborative leader who gets results the right way. I was impressed with how he led a successful neighborhood effort to advocate for street safety improvements by asking questions, doing his homework, and empowering his neighbors to be heard. As a Select Board member, Joe will bring these skills to the wider range of challenges facing Arlington."</p>
                         </div>
                     </article>
 
@@ -777,6 +760,16 @@
                         </div>
                         <div class="testimonial-body">
                             <p>"During my time working with Joe on Dallin's PTO, I was impressed by his ability to lead, collaborate, and implement forward-thinking changes, helping the organization evolve even in an environment that can be slow to adapt. His strong commitment to community progress makes him an excellent candidate for the Select Board."</p>
+                        </div>
+                    </article>
+
+                    <article class="testimonial-card" aria-label="Endorsement from Adam Auster">
+                        <div class="testimonial-header">
+                            <span class="testimonial-name">Adam Auster</span>
+                            <span class="testimonial-role">Town Meeting Member, Precinct 16</span>
+                        </div>
+                        <div class="testimonial-body">
+                            <p>"Joe has been a consistent, pragmatic advocate for street safety, as an individual and an active member of the Everywhere Arlington Livable Streets Coalition."</p>
                         </div>
                     </article>
 
@@ -811,12 +804,6 @@
                         </div>
                         
                         <div class="checkbox-group">
-                            <p class="checkbox-hint">Select any that apply (optional):</p>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="email-list" id="email-list">
-                                <span>Add me to your email list</span>
-                            </label>
-                            
                             <label class="checkbox-label">
                                 <input type="checkbox" name="host-coffee" id="host-coffee">
                                 <span>I'm interested in hosting a coffee for the campaign</span>
@@ -835,7 +822,7 @@
             <a href="https://facebook.com/JoeForArlington" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page (opens in new window)">
                 <i data-lucide="facebook" aria-hidden="true"></i>
             </a>
-            <a href="mailto:info@joeforarlington.com" class="social-icon" aria-label="Send us an email">
+            <a href="/cdn-cgi/l/email-protection#4c25222a230c2623292a233e2d3e2025222b382322622f2321" class="social-icon" aria-label="Send us an email">
                 <i data-lucide="mail" aria-hidden="true"></i>
             </a>
         </div>
@@ -851,7 +838,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         window.addEventListener('load', function() {
             try {
                 if (typeof lucide !== 'undefined') {
@@ -867,11 +854,9 @@
             
             const name = document.getElementById('contact-name').value.trim();
             const email = document.getElementById('contact-email').value.trim();
-            const emailList = document.getElementById('email-list').checked;
             const hostCoffee = document.getElementById('host-coffee').checked;
             const submitButton = event.target.querySelector('.submit-button');
 
-            // Only require name and email — checkboxes are optional
             if (!name || !email) {
                 alert('Please enter your name and email address.');
                 return;
@@ -888,7 +873,7 @@
             
             const scriptURL = 'https://script.google.com/macros/s/AKfycbxIOT_IqGs44XzV99YgXx3R8iWDr6LecP69_rjqJeL1NxAVytIoqCn_4_I7IyJMEds9og/exec';
             
-            const formData = { name, email, emailList, hostCoffee };
+            const formData = { name, email, hostCoffee };
             
             fetch(scriptURL, {
                 method: 'POST',
@@ -897,14 +882,8 @@
                 body: JSON.stringify(formData)
             })
             .then(() => {
-                let message = `Thank you, ${name}! We've received your information.`;
-                if (emailList && hostCoffee) {
-                    message += " You'll be added to our email list and we'll be in touch about hosting a coffee.";
-                } else if (emailList) {
-                    message += " You'll be added to our email list.";
-                } else if (hostCoffee) {
-                    message += " We'll be in touch about hosting a coffee.";
-                }
+                let message = `Thank you, ${name}! You've been added to our list.`;
+                if (hostCoffee) message += " We'll also be in touch about hosting a coffee.";
                 alert(message);
                 event.target.reset();
                 submitButton.disabled = false;
@@ -948,11 +927,4 @@
 
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+                if (link.getAttribute(
