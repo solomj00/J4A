@@ -6,6 +6,9 @@
     <title>Joe For Arlington - A Better Arlington for Every Generation</title>
     <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-primary: #ffffff;
@@ -32,7 +35,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Source Serif 4', Georgia, serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
@@ -59,10 +62,12 @@
         }
 
         .logo {
-            font-size: 24px;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 22px;
             font-weight: 700;
             color: #ffffff;
             text-decoration: none;
+            letter-spacing: 0.01em;
         }
 
         .nav-links { 
@@ -80,6 +85,7 @@
             border-radius: var(--radius-sm);
             transition: 0.2s;
             display: block;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         .nav-link.active, .nav-link:hover { 
@@ -114,6 +120,7 @@
         }
 
         .section-title { 
+            font-family: 'Playfair Display', Georgia, serif;
             font-size: 36px; 
             margin-bottom: 10px; 
             color: var(--accent-burgundy); 
@@ -174,56 +181,6 @@
             margin-bottom: 0;
         }
 
-        /* Testimonial styles */
-        .testimonial {
-            display: flex;
-            gap: 20px;
-            align-items: flex-start;
-        }
-
-        .testimonial-avatar {
-            flex-shrink: 0;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: var(--accent-burgundy);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 24px;
-        }
-
-        .testimonial-content {
-            flex: 1;
-        }
-
-        /* Testimonial attribution styling */
-        .testimonial-name {
-            font-size: 28px;
-            color: var(--accent-burgundy);
-            font-weight: 700;
-            margin-bottom: 12px;
-            display: block;
-        }
-
-        @media (max-width: 768px) {
-            .testimonial {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-            .testimonial-content {
-                width: 100%;
-            }
-
-            .testimonial-name {
-                font-size: 22px;
-            }
-        }
-
         .detail-section {
             background: var(--bg-secondary);
             border-radius: var(--radius-lg);
@@ -233,6 +190,7 @@
         }
 
         .detail-section h3 {
+            font-family: 'Playfair Display', Georgia, serif;
             color: var(--accent-burgundy);
             font-size: 24px;
             margin-bottom: 15px;
@@ -241,23 +199,6 @@
 
         .detail-section h3:first-child {
             margin-top: 0;
-        }
-
-        /* Compact sections for Stay in Touch and Coffee */
-        #supporters .detail-section,
-        #coffee .detail-section {
-            padding: 30px;
-        }
-
-        #supporters .section-header,
-        #coffee .section-header {
-            margin-bottom: 25px;
-        }
-
-        #supporters .narrative-box,
-        #coffee .narrative-box {
-            padding: 25px;
-            margin-bottom: 25px;
         }
 
         .detail-list { 
@@ -281,47 +222,86 @@
             font-weight: bold; 
         }
 
-        /* Countdown */
-        .countdown-container {
-            text-align: center;
-            padding: 40px 0;
-            border-top: 2px solid var(--border-color);
-            margin-top: 40px;
+        /* ─── TESTIMONIAL CARDS ─────────────────────────────────────────────── */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 48px;
         }
 
-        .countdown-label {
-            font-size: 1.2rem;
-            color: var(--accent-burgundy);
+        .testimonial-card {
+            background: #fff;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+        }
+
+        .testimonial-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-3px);
+        }
+
+        /* Colored header band — the identity anchors the quote */
+        .testimonial-header {
+            background: var(--accent-burgundy);
+            padding: 22px 26px 18px;
+            position: relative;
+        }
+
+        .testimonial-header::after {
+            content: '\201C';
+            position: absolute;
+            right: 20px;
+            top: 8px;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 80px;
+            line-height: 1;
+            color: rgba(255,255,255,0.15);
+            pointer-events: none;
+        }
+
+        .testimonial-name {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            display: block;
+            margin-bottom: 4px;
+            line-height: 1.25;
+        }
+
+        .testimonial-role {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 13px;
             font-weight: 600;
-            margin-bottom: 10px;
+            color: rgba(255,255,255,0.75);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
         }
 
-        .countdown-display {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--accent-burgundy);
+        .testimonial-body {
+            padding: 22px 26px 26px;
+            flex: 1;
         }
 
-        /* Countdown */
-        .countdown-container {
-            text-align: center;
-            padding: 40px 0;
-            border-top: 2px solid var(--border-color);
-            margin-top: 40px;
+        .testimonial-body p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+            font-style: italic;
         }
 
-        .countdown-label {
-            font-size: 1.2rem;
-            color: var(--accent-burgundy);
-            font-weight: 600;
-            margin-bottom: 10px;
+        @media (max-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
         }
-
-        .countdown-display {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--accent-burgundy);
-        }
+        /* ──────────────────────────────────────────────────────────────────── */
 
         /* Contact Form Styles */
         .contact-form {
@@ -339,6 +319,7 @@
             color: var(--accent-burgundy);
             font-weight: 600;
             font-size: 16px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         .form-group input[type="text"],
@@ -362,6 +343,15 @@
             margin: 20px 0;
         }
 
+        /* Helper text shown when neither checkbox is checked */
+        .checkbox-hint {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+
         .checkbox-label {
             display: flex;
             align-items: center;
@@ -377,6 +367,7 @@
             margin-right: 12px;
             cursor: pointer;
             accent-color: var(--accent-burgundy);
+            flex-shrink: 0;
         }
 
         .submit-button {
@@ -390,6 +381,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s ease;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         .submit-button:hover {
@@ -482,11 +474,6 @@
             outline: 3px solid #0066cc;
         }
 
-        /* Enhanced Interactive States */
-        a:hover, button:hover {
-            transition: all 0.2s ease;
-        }
-
         .social-icon:focus-visible {
             outline-color: #ffffff;
             outline-width: 3px;
@@ -550,16 +537,6 @@
             border: 0;
         }
 
-        /* Improved list accessibility */
-        .detail-list li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--accent-burgundy);
-            font-weight: bold;
-            aria-hidden: true;
-        }
-
         /* Mobile Responsive */
         @media (max-width: 768px) {
             body {
@@ -592,10 +569,6 @@
 
             .section-title {
                 font-size: 28px;
-            }
-
-            .countdown-display {
-                font-size: 2rem;
             }
 
             nav {
@@ -638,7 +611,6 @@
 </head>
 <body>
 
-    <!-- Skip to main content for keyboard users -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <header>
@@ -755,43 +727,79 @@
                     <p class="section-subtitle">Endorsed by neighbors and leaders across Arlington</p>
                 </div>
 
-                <div class="narrative-box">
-                    <span class="testimonial-name">Eric Helmuth — Select Board Member</span>
-                    <p><strong>"Joe is a smart, collaborative leader who gets results the right way. I was impressed with how he led a successful neighborhood effort to advocate for street safety improvements by asking questions, doing his homework, and empowering his neighbors to be heard. As a Select Board member, Joe will bring these skills to the wider range of challenges facing Arlington."</strong></p>
+                <div class="testimonials-grid">
+
+                    <!-- Featured: longest / most authoritative quote gets full-width treatment -->
+                    <article class="testimonial-card" aria-label="Endorsement from Len Diggins">
+                        <div class="testimonial-header">
+                            <span class="testimonial-name">Len Diggins</span>
+                            <span class="testimonial-role">Former Select Board Member</span>
+                        </div>
+                        <div class="testimonial-body">
+                            <p>"Joe is smart, practical, forward-thinking, and most importantly, he is empathetic. I'm confident he will listen to everyone who reaches out to him and take into account the needs of all others as well. The Arlington community can take credit and be proud that it has raised someone like Joe. I've known that ever since he asked me about a transportation-related element in the capital budget which he felt deserved scrutiny. He was correct — which showed me not only how much he cares but also that he is willing and able to be a good steward for the community."</p>
+                        </div>
+                    </article>
+
+                    <article class="testimonial-card" aria-label="Endorsement from Eric Helmuth">
+                        <div class="testimonial-header">
+                            <span class="testimonial-name">Eric Helmuth</span>
+                            <span class="testimonial-role">Select Board Member</span>
+                        </div>
+                        <div class="testimonial-body">
+                            <p>"Joe is a smart, collaborative leader who gets results the right way. I was impressed with how he led a successful neighborhood effort to advocate for street safety improvements by asking questions, doing his homework, and empowering his neighbors to be heard. As a Select Board member, Joe will bring these skills to the wider range of challenges facing Arlington."</p>
+                        </div>
+                    </article>
+
+                    <article class="testimonial-card" aria-label="Endorsement from Leah Lyman Waldron">
+                        <div class="testimonial-header">
+                            <span class="testimonial-name">Leah Lyman Waldron</span>
+                            <span class="testimonial-role">Arlington Resident &amp; Local Pastor</span>
+                        </div>
+                        <div class="testimonial-body">
+                            <p>"Joe has been a key resource for our neighborhood and our congregation as we've worked to improve pedestrian safety along Park Avenue. He is smart, strategic, caring, committed, and centers the work rather than himself. He would make an incredible addition to the Select Board."</p>
+                        </div>
+                    </article>
+
+                    <article class="testimonial-card" aria-label="Endorsement from Adam Auster">
+                        <div class="testimonial-header">
+                            <span class="testimonial-name">Adam Auster</span>
+                            <span class="testimonial-role">Town Meeting Member, Precinct 16</span>
+                        </div>
+                        <div class="testimonial-body">
+                            <p>"Joe has been a consistent, pragmatic advocate for street safety, as an individual and an active member of the Everywhere Arlington Livable Streets Coalition."</p>
+                        </div>
+                    </article>
+
+                    <article class="testimonial-card" aria-label="Endorsement from Mana Joshi">
+                        <div class="testimonial-header">
+                            <span class="testimonial-name">Mana Joshi</span>
+                            <span class="testimonial-role">Former Dallin Parent</span>
+                        </div>
+                        <div class="testimonial-body">
+                            <p>"During my time working with Joe on Dallin's PTO, I was impressed by his ability to lead, collaborate, and implement forward-thinking changes, helping the organization evolve even in an environment that can be slow to adapt. His strong commitment to community progress makes him an excellent candidate for the Select Board."</p>
+                        </div>
+                    </article>
+
+                    <article class="testimonial-card" aria-label="Endorsement from Kara Baskin">
+                        <div class="testimonial-header">
+                            <span class="testimonial-name">Kara Baskin</span>
+                            <span class="testimonial-role">Dallin Parent</span>
+                        </div>
+                        <div class="testimonial-body">
+                            <p>"Joe is smart, efficient, and responsive. Most of all, he is demonstrably committed to improving our town. He has the right mix of competence and lived experience for this job, and I'm happy to endorse him."</p>
+                        </div>
+                    </article>
+
                 </div>
 
-                <div class="narrative-box">
-                    <span class="testimonial-name">Leah Lyman Waldron — Arlington Resident and Local Pastor</span>
-                    <p><strong>"Joe has been a key resource for our neighborhood and our congregation as we've worked to improve pedestrian safety along Park Avenue. He is smart, strategic, caring, committed, and centers the work rather than himself. He would make an incredible addition to the Select Board to help Arlington make measurable progress on the issues that matter to our community."</strong></p>
-                </div>
-
-                <div class="narrative-box">
-                    <span class="testimonial-name">Len Diggins — Former Select Board Member</span>
-                    <p><strong>"Joe is smart, practical, forward-thinking, and most importantly, he is empathetic. I'm confident he will listen to everyone who reaches out to him and take into account the needs of all others as well. The Arlington community can take credit and be proud that it has raised someone like Joe. Thankfully, Joe has stepped up to take on the challenging role as a member of the Select Board in his hometown, and I know he is up for the task. I've known that ever since he asked me about a transportation-related element in the capital budget which he felt deserved scrutiny. He was correct, which showed me not only how much he cares but also that he is willing and able to be a good steward for the community and to be an effective advocate for the causes in which he believes."</strong></p>
-                </div>
-
-                <div class="narrative-box">
-                    <span class="testimonial-name">Mana Joshi — Former Dallin Parent</span>
-                    <p><strong>"During my time working with Joe on Dallin's PTO, I was impressed by his ability to lead, collaborate, and implement forward thinking changes, helping the organization evolve, even in an environment that can be slow to adapt. His strong commitment to community progress makes him an excellent candidate for the Select Board."</strong></p>
-                </div>
-
-                <div class="narrative-box">
-                    <span class="testimonial-name">Adam Auster — Town Meeting Member, Precinct 16</span>
-                    <p><strong>"Joe has been a consistent, pragmatic advocate for street safety, as an individual and an active member of the Everywhere Arlington Livable Streets Coalition."</strong></p>
-                </div>
-
-                <div class="narrative-box">
-                    <span class="testimonial-name">Kara Baskin — Dallin Parent</span>
-                    <p><strong>"Joe is smart, efficient, and responsive. Most of all, he is demonstrably committed to improving our town. He has the right mix of competence and lived experience for this job, and I'm happy to endorse him."</strong></p>
-                </div>
-
+                <!-- Stay in Touch -->
                 <div class="section-header">
                     <h2 class="section-title">Stay In Touch!</h2>
                     <p class="section-subtitle">We're glad you're here. Stay in touch and join neighbors who believe in Arlington's future.</p>
                 </div>
                 
                 <div class="detail-section">
-                    <form class="contact-form" onsubmit="handleFormSubmit(event)">
+                    <form class="contact-form" onsubmit="handleFormSubmit(event)" novalidate>
                         <div class="form-group">
                             <label for="contact-name">Full Name *</label>
                             <input type="text" id="contact-name" name="name" placeholder="First and Last Name" required>
@@ -803,6 +811,7 @@
                         </div>
                         
                         <div class="checkbox-group">
+                            <p class="checkbox-hint">Select any that apply (optional):</p>
                             <label class="checkbox-label">
                                 <input type="checkbox" name="email-list" id="email-list">
                                 <span>Add me to your email list</span>
@@ -843,7 +852,6 @@
     </footer>
 
     <script>
-        // Initialize icons when page loads
         window.addEventListener('load', function() {
             try {
                 if (typeof lucide !== 'undefined') {
@@ -854,48 +862,42 @@
             }
         });
 
-        // Handle contact form submission
         function handleFormSubmit(event) {
             event.preventDefault();
             
-            const name = document.getElementById('contact-name').value;
-            const email = document.getElementById('contact-email').value;
+            const name = document.getElementById('contact-name').value.trim();
+            const email = document.getElementById('contact-email').value.trim();
             const emailList = document.getElementById('email-list').checked;
             const hostCoffee = document.getElementById('host-coffee').checked;
             const submitButton = event.target.querySelector('.submit-button');
-            
-            if (!emailList && !hostCoffee) {
-                alert('Please select at least one option.');
+
+            // Only require name and email — checkboxes are optional
+            if (!name || !email) {
+                alert('Please enter your name and email address.');
+                return;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
                 return;
             }
             
-            // Disable button and show loading state
             submitButton.disabled = true;
-            submitButton.textContent = 'Submitting...';
+            submitButton.textContent = 'Submitting…';
             
-            // Google Apps Script Web App URL
             const scriptURL = 'https://script.google.com/macros/s/AKfycbxIOT_IqGs44XzV99YgXx3R8iWDr6LecP69_rjqJeL1NxAVytIoqCn_4_I7IyJMEds9og/exec';
             
-            // Prepare the data
-            const formData = {
-                name: name,
-                email: email,
-                emailList: emailList,
-                hostCoffee: hostCoffee
-            };
+            const formData = { name, email, emailList, hostCoffee };
             
-            // Send to Google Sheets
             fetch(scriptURL, {
                 method: 'POST',
                 mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
             })
-            .then(response => {
-                // Success message
-                let message = `Thank you ${name}! We've received your information.`;
+            .then(() => {
+                let message = `Thank you, ${name}! We've received your information.`;
                 if (emailList && hostCoffee) {
                     message += " You'll be added to our email list and we'll be in touch about hosting a coffee.";
                 } else if (emailList) {
@@ -903,7 +905,6 @@
                 } else if (hostCoffee) {
                     message += " We'll be in touch about hosting a coffee.";
                 }
-                
                 alert(message);
                 event.target.reset();
                 submitButton.disabled = false;
@@ -917,7 +918,6 @@
             });
         }
 
-        // Mobile menu toggle
         function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
             const menuBtn = document.querySelector('.mobile-menu-toggle');
@@ -925,7 +925,6 @@
             menuBtn.setAttribute('aria-expanded', isOpen);
         }
 
-        // Close mobile menu when clicking a link
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', function() {
                 const navLinks = document.getElementById('navLinks');
@@ -935,7 +934,6 @@
             });
         });
 
-        // Active nav highlighting on scroll
         window.addEventListener('scroll', function() {
             const sections = document.querySelectorAll('section[id]');
             const navLinks = document.querySelectorAll('.nav-link');
@@ -943,7 +941,6 @@
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
                 if (window.pageYOffset >= sectionTop - 100) {
                     current = section.getAttribute('id');
                 }
