@@ -444,16 +444,24 @@
             min-width: 44px;
             min-height: 44px;
             padding: 10px;
-            font-size: 24px;
             align-items: center;
             justify-content: center;
         }
 
-        .mobile-menu-toggle svg {
-            width: 32px;
-            height: 32px;
-            stroke-width: 2.5;
+        .hamburger-icon {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+        }
+
+        .hamburger-icon span {
             display: block;
+            width: 100%;
+            height: 2px;
+            background: #ffffff;
+            border-radius: 2px;
         }
 
         /* Enhanced Focus States for Accessibility */
@@ -615,7 +623,11 @@
         <nav role="navigation" aria-label="Main navigation">
             <a href="#home" class="logo">Joseph Solomon for Select Board</a>
             <button class="mobile-menu-toggle" onclick="toggleMenu()" aria-label="Toggle navigation menu" aria-expanded="false">
-                <i data-lucide="menu" aria-hidden="true"></i>
+                <span class="hamburger-icon" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
             </button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home" class="nav-link">Home</a></li>
@@ -836,7 +848,7 @@
 
                     <p style="color: var(--text-secondary); font-size: 17px; margin-top: 25px; text-align: center;">
                         Or reach us directly at 
-                        <a href="mailto:joeforarlington&#64;gmail.com" style="color: var(--accent-burgundy); text-decoration: underline;">joeforarlington&#64;gmail.com</a>.
+                        <a href="/cdn-cgi/l/email-protection#5933363c3f362b382b3530373e2d36377f7a6f6d623e34383035773a3634" style="color: var(--accent-burgundy); text-decoration: underline;">joeforarlington&#64;gmail.com</a>.
                     </p>
             </div>
         </section>
@@ -863,7 +875,7 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         document.addEventListener('DOMContentLoaded', function() {
             // Attach form handler
             const form = document.querySelector('.contact-form');
