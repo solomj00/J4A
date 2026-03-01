@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joe For Arlington - A Better Arlington for Every Generation</title>
     <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js" defer></script>
 
     <style>
         :root {
@@ -792,7 +792,7 @@
                 </div>
                 
                 <div class="detail-section">
-                    <form class="contact-form" onsubmit="handleFormSubmit(event)" novalidate>
+                    <form class="contact-form" novalidate>
                         <div class="form-group">
                             <label for="contact-name">Full Name *</label>
                             <input type="text" id="contact-name" name="name" placeholder="First and Last Name" required>
@@ -839,14 +839,24 @@
     </footer>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        window.addEventListener('load', function() {
+        document.addEventListener('DOMContentLoaded', function() {
+            // Attach form handler
+            const form = document.querySelector('.contact-form');
+            if (form) form.addEventListener('submit', handleFormSubmit);
+
+            // Initialize icons if Lucide loaded
             try {
-                if (typeof lucide !== 'undefined') {
-                    lucide.createIcons();
-                }
+                if (typeof lucide !== 'undefined') lucide.createIcons();
             } catch (e) {
                 console.log("Icons could not load");
             }
+        });
+
+        // Lucide may load after DOMContentLoaded due to defer — try again on window load
+        window.addEventListener('load', function() {
+            try {
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+            } catch (e) {}
         });
 
         function handleFormSubmit(event) {
@@ -927,4 +937,11 @@
 
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute(
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
