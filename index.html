@@ -4,6 +4,406 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joe For Arlington - A Better Arlington for Every Generation</title>
+    <meta property="og:title" content="Joe Solomon for Arlington Select Board">
+    <meta property="og:description" content="Arlington is my home. I'm running for Select Board to make sure it works for every generation — families starting out, young people finding their path, and neighbors who built this community.">
+    <meta property="og:image" content="family.jpg">
+    <meta property="og:url" content="https://joeforarlington.com">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js" defer></script>
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f8f8;
+            --text-primary: #5e1315;
+            --text-secondary: #333333;
+            --accent-burgundy: #5e1315;
+            --accent-light: #8b2326;
+            --border-color: rgba(94, 19, 21, 0.2);
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
+            --radius-lg: 20px;
+            --radius-md: 15px;
+            --radius-sm: 8px;
+            --container-width: 1100px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; overflow-x: hidden; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; width: 100%; }
+        .election-banner { background: var(--accent-light); color: #fff; text-align: center; padding: 10px 20px; font-size: 15px; font-weight: 600; letter-spacing: 0.02em; position: fixed; top: 0; left: 0; right: 0; z-index: 2100; }
+        header { position: fixed; top: 38px; left: 0; right: 0; z-index: 2000; background: var(--accent-burgundy); box-shadow: var(--shadow); }
+        nav { max-width: 1400px; margin: 0 auto; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; position: relative; }
+        .logo { font-size: 22px; font-weight: 700; color: #ffffff; text-decoration: none; }
+        .nav-links { display: flex; gap: 10px; list-style: none; align-items: center; }
+        .nav-link { color: #ffffff; text-decoration: none; font-size: 15px; font-weight: 500; padding: 8px 12px; border-radius: var(--radius-sm); transition: 0.2s; display: block; }
+        .nav-link.active, .nav-link:hover { background: rgba(255,255,255,0.2); }
+        .nav-link.contact-btn { font-weight: 700; border: 2px solid white; padding: 7px 14px; }
+        .nav-link.contact-btn:hover { background: #fff; color: var(--accent-burgundy); }
+        section { padding: 50px 20px 30px; overflow-x: hidden; }
+        section:first-of-type { padding-top: 130px; }
+        .content-section { max-width: var(--container-width); margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 30px; }
+        .section-title { font-size: 34px; margin-bottom: 8px; color: var(--accent-burgundy); }
+        .section-subtitle { font-size: 17px; color: var(--text-secondary); }
+        .hero-container { display: flex; gap: 40px; align-items: flex-start; margin-bottom: 24px; }
+        .hero-image { flex: 0 0 42%; order: 2; }
+        .hero-image img { width: 100%; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); display: block; }
+        .hero-text { flex: 1; order: 1; }
+        .hero-intro { background: var(--bg-secondary); padding: 30px; border-radius: var(--radius-md); box-shadow: var(--shadow); margin-bottom: 20px; }
+        .hero-intro p { font-size: 18px; color: var(--text-secondary); margin-bottom: 14px; }
+        .hero-intro p:last-of-type { margin-bottom: 0; }
+        .expand-toggle { background: none; border: none; color: var(--accent-burgundy); font-size: 15px; font-weight: 600; cursor: pointer; padding: 0; margin-top: 12px; text-decoration: underline; text-underline-offset: 3px; display: inline-block; font-family: inherit; }
+        .expand-content { display: none; margin-top: 14px; }
+        .expand-content.open { display: block; }
+        .expand-content p { font-size: 17px; color: var(--text-secondary); margin-bottom: 12px; }
+        .expand-content p:last-child { margin-bottom: 0; }
+        .hero-pull-quote { background: var(--accent-burgundy); color: #fff; padding: 24px 28px; border-radius: var(--radius-md); position: relative; }
+        .hero-pull-quote::before { content: '\201C'; font-size: 64px; line-height: 1; color: rgba(255,255,255,0.2); position: absolute; top: 8px; left: 16px; font-family: Georgia, serif; }
+        .hero-pull-quote p { font-size: 16px; font-style: italic; line-height: 1.6; margin-bottom: 12px; padding-left: 10px; }
+        .hero-pull-quote .attribution { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.8); padding-left: 10px; }
+        .about-strip { background: var(--bg-secondary); border-radius: var(--radius-md); padding: 28px 34px; box-shadow: var(--shadow); }
+        .about-strip-label { color: var(--accent-burgundy); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; display: block; }
+        .about-credentials { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 18px; }
+        .credential-item { display: flex; flex-direction: column; }
+        .credential-title { font-weight: 700; font-size: 14px; color: var(--text-primary); margin-bottom: 2px; }
+        .credential-detail { font-size: 13px; color: var(--text-secondary); }
+        .full-experience-toggle { background: none; border: none; color: var(--accent-burgundy); font-size: 14px; font-weight: 600; cursor: pointer; padding: 0; text-decoration: underline; text-underline-offset: 3px; font-family: inherit; }
+        .full-experience { display: none; margin-top: 22px; border-top: 1px solid var(--border-color); padding-top: 22px; }
+        .full-experience.open { display: block; }
+        .full-experience h3 { color: var(--accent-burgundy); font-size: 17px; margin-bottom: 8px; margin-top: 20px; }
+        .full-experience h3:first-child { margin-top: 0; }
+        .detail-section { background: var(--bg-secondary); border-radius: var(--radius-lg); padding: 36px; margin-bottom: 25px; box-shadow: var(--shadow); }
+        .detail-section h3 { color: var(--accent-burgundy); font-size: 22px; margin-bottom: 12px; margin-top: 24px; }
+        .detail-section h3:first-child { margin-top: 0; }
+        .detail-list { list-style: none; margin: 14px 0; }
+        .detail-list li { position: relative; padding-left: 26px; margin-bottom: 10px; color: var(--text-secondary); font-size: 15px; }
+        .detail-list li::before { content: "✓"; position: absolute; left: 0; color: var(--accent-burgundy); font-weight: bold; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 22px; }
+        .testimonial-card { background: #fff; border-radius: var(--radius-md); box-shadow: var(--shadow); border: 1px solid var(--border-color); overflow: hidden; display: flex; flex-direction: column; transition: box-shadow 0.2s ease, transform 0.2s ease; }
+        .testimonial-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+        .testimonial-header { background: var(--accent-burgundy); padding: 20px 24px 16px; position: relative; }
+        .testimonial-header::after { content: '\201C'; position: absolute; right: 18px; top: 6px; font-family: Georgia, serif; font-size: 72px; line-height: 1; color: rgba(255,255,255,0.15); pointer-events: none; }
+        .testimonial-name { font-size: 19px; font-weight: 700; color: #fff; display: block; margin-bottom: 3px; line-height: 1.25; }
+        .testimonial-role { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.75); text-transform: uppercase; letter-spacing: 0.06em; }
+        .testimonial-body { padding: 20px 24px 24px; flex: 1; }
+        .testimonial-body p { font-size: 15px; color: var(--text-secondary); line-height: 1.65; font-style: italic; }
+        .testimonial-body p + p { margin-top: 10px; }
+        .contact-form { max-width: 560px; margin: 0 auto; }
+        .form-group { margin-bottom: 14px; }
+        .form-group label { display: block; margin-bottom: 6px; color: var(--accent-burgundy); font-weight: 600; font-size: 15px; }
+        .form-group input[type="text"], .form-group input[type="email"] { width: 100%; padding: 11px 14px; border: 2px solid var(--border-color); border-radius: var(--radius-sm); font-size: 16px; font-family: inherit; transition: border-color 0.2s; }
+        .form-group input:focus { outline: none; border-color: var(--accent-burgundy); }
+        .checkbox-group { margin: 18px 0; }
+        .checkbox-label { display: flex; align-items: center; padding: 10px 0; cursor: pointer; font-size: 16px; color: var(--text-secondary); }
+        .checkbox-label input[type="checkbox"] { width: 20px; height: 20px; margin-right: 12px; cursor: pointer; accent-color: var(--accent-burgundy); flex-shrink: 0; }
+        .submit-button { width: 100%; padding: 14px 30px; background: var(--accent-burgundy); color: white; border: none; border-radius: var(--radius-sm); font-size: 17px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; font-family: inherit; }
+        .submit-button:hover { background: var(--accent-light); transform: translateY(-2px); box-shadow: var(--shadow); }
+        .contact-email-line { margin-top: 22px; text-align: center; font-size: 16px; color: var(--text-secondary); }
+        .contact-email-line a { color: var(--accent-burgundy); text-decoration: underline; text-underline-offset: 3px; }
+        .form-feedback { display: none; margin-top: 20px; padding: 16px 20px; border-radius: var(--radius-sm); font-size: 16px; font-weight: 500; text-align: center; }
+        .form-feedback.success { display: block; background: #edf7ed; color: #1e5c1e; border: 1px solid #a3d4a3; }
+        .form-feedback.error { display: block; background: #fdf0f0; color: #7a1a1a; border: 1px solid #e8a8a8; }
+        .chevron { display: inline-block; width: 10px; height: 10px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); margin-left: 6px; vertical-align: middle; position: relative; top: -2px; transition: transform 0.2s ease; }
+        .chevron.open { transform: rotate(-135deg); top: 2px; }
+        footer { background: var(--accent-burgundy); color: #fff; padding: 50px 20px 30px; text-align: center; }
+        .social-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 24px; }
+        .social-icon { color: white; transition: opacity 0.2s; }
+        .social-icon:hover { opacity: 0.7; }
+        .footer-legal { font-size: 13px; opacity: 0.8; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 18px; margin-top: 18px; }
+        .footer-legal a { color: white; margin: 0 10px; text-decoration: underline; text-underline-offset: 3px; }
+        .mobile-menu-toggle { display: none; background: none; border: none; color: white; cursor: pointer; min-width: 44px; min-height: 44px; padding: 10px; align-items: center; justify-content: center; }
+        .hamburger-icon { display: flex; flex-direction: column; justify-content: space-between; width: 24px; height: 18px; }
+        .hamburger-icon span { display: block; width: 100%; height: 2px; background: #ffffff; border-radius: 2px; }
+        *:focus-visible { outline: 3px solid #0066cc; outline-offset: 2px; }
+        .nav-link:focus-visible, .logo:focus-visible { outline-color: #fff; outline-width: 2px; }
+        .social-icon:focus-visible { outline-color: #fff; outline-width: 3px; outline-offset: 4px; }
+        .skip-link { position: absolute; top: -40px; left: 0; background: var(--accent-burgundy); color: white; padding: 8px 16px; text-decoration: none; z-index: 3000; border-radius: 0 0 var(--radius-sm) 0; }
+        .skip-link:focus { top: 0; }
+        .visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+        @media (max-width: 768px) {
+            .election-banner { font-size: 13px; padding: 8px 12px; }
+            header { top: 34px; }
+            section:first-of-type { padding-top: 120px; }
+            .logo { font-size: 16px; }
+            .mobile-menu-toggle { display: flex; }
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--accent-burgundy); flex-direction: column; padding: 16px 20px 20px; box-shadow: var(--shadow-lg); gap: 4px; }
+            .nav-links.open { display: flex; }
+            nav { padding: 12px 16px; }
+            .section-title { font-size: 26px; }
+            .hero-container { flex-direction: column; gap: 20px; }
+            .hero-image { order: 1; width: 100%; }
+            .hero-text { order: 2; width: 100%; }
+            .about-credentials { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .hero-intro, .detail-section, .about-strip { padding: 20px; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            section { padding: 40px 14px 24px; }
+        }
+        @media (max-width: 420px) { .about-credentials { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div class="election-banner" role="banner">
+        Election Day is June 3rd &mdash; Vote Joe Solomon for Select Board
+    </div>
+    <header>
+        <nav role="navigation" aria-label="Main navigation">
+            <a href="#home" class="logo">Joseph Solomon for Select Board</a>
+            <button class="mobile-menu-toggle" onclick="toggleMenu()" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="hamburger-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#values" class="nav-link">Values</a></li>
+                <li><a href="#endorsements" class="nav-link">Endorsements</a></li>
+                <li><a href="#contact" class="nav-link contact-btn">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="main-content">
+        <section id="home">
+            <div class="content-section">
+                <div class="hero-container">
+                    <div class="hero-text">
+                        <div class="hero-intro">
+                            <p><strong>Hi, I'm Joe &mdash; and I'm running for Select Board.</strong></p>
+                            <p>Arlington is my home. I grew up here, raised my family here, and spent twenty years in public and private sector roles learning how to get things done. I'm running to make sure Arlington works for every generation.</p>
+                            <button class="expand-toggle" onclick="toggleExpand('hero-more', this)" aria-expanded="false">More about Joe <span class="chevron" aria-hidden="true"></span></button>
+                            <div class="expand-content" id="hero-more">
+                                <p>I've experienced this town from many angles: as a student in our public schools, a parent and PTO leader, and as a member of town government. I believe in data-driven decision making, transparent governance, and always putting residents first.</p>
+                                <p>This combination of deep community roots and professional experience positions me to partner effectively with other Select Board members and the Town Manager to move Arlington forward. With thoughtful planning and engaged leadership, we can enhance what makes Arlington special and prepare it for the future.</p>
+                            </div>
+                        </div>
+                        <div class="hero-pull-quote">
+                            <p>"Joe is a smart, collaborative leader who gets results the right way &mdash; asking questions, doing his homework, and empowering his neighbors to be heard."</p>
+                            <span class="attribution">Eric Helmuth &mdash; Select Board Member</span>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="family.jpg" alt="Joe Solomon with his family in Arlington.">
+                    </div>
+                </div>
+                <div class="about-strip">
+                    <span class="about-strip-label">Background</span>
+                    <div class="about-credentials">
+                        <div class="credential-item"><span class="credential-title">Town Meeting Member</span><span class="credential-detail">Precinct 16</span></div>
+                        <div class="credential-item"><span class="credential-title">Vice Chair</span><span class="credential-detail">Capital Planning Committee</span></div>
+                        <div class="credential-item"><span class="credential-title">PTO President</span><span class="credential-detail">Dallin Elementary, 2022&ndash;2024</span></div>
+                        <div class="credential-item"><span class="credential-title">20+ Years</span><span class="credential-detail">Public &amp; private sector leadership</span></div>
+                        <div class="credential-item"><span class="credential-title">BS, Industrial Engineering</span><span class="credential-detail">Rensselaer Polytechnic Institute</span></div>
+                        <div class="credential-item"><span class="credential-title">MBA</span><span class="credential-detail">Boston University</span></div>
+                    </div>
+                    <button class="full-experience-toggle" onclick="toggleExpand('full-experience', this)" aria-expanded="false">Full experience details <span class="chevron" aria-hidden="true"></span></button>
+                    <div class="full-experience" id="full-experience">
+                        <h3>Town Meeting Member, Precinct 16</h3>
+                        <ul class="detail-list">
+                            <li>Represent Precinct 16 residents through informed voting on town policies, budgets, and initiatives.</li>
+                            <li>Organize and host precinct meetings to facilitate dialogue between neighbors and town leadership.</li>
+                            <li>Research and analyze complex warrant articles to make thoughtful decisions at Town Meeting.</li>
+                        </ul>
+                        <h3>Vice Chair, Capital Planning Committee</h3>
+                        <ul class="detail-list">
+                            <li>Helped guide responsible, long-term investment of taxpayer funds.</li>
+                            <li>Served on the DPW and Recreation subcommittee, reviewing infrastructure and facilities needs.</li>
+                            <li>Co-authored the <a href="https://www.arlingtonma.gov/home/showpublisheddocument/73700/638802304565830000" target="_blank" rel="noopener noreferrer" style="color:var(--accent-burgundy);">Capital Planning Report to Town Meeting</a>.</li>
+                        </ul>
+                        <h3>President, Dallin Elementary PTO (2022&ndash;2024)</h3>
+                        <ul class="detail-list">
+                            <li>Led a volunteer organization supporting school programming, community events, and fundraising.</li>
+                            <li>Partnered with school leadership on budgeting and allocation of funds for student enrichment.</li>
+                            <li>Recruited and organized parent volunteers to strengthen school community.</li>
+                        </ul>
+                        <h3>Organizer, Park Avenue Safety Improvements</h3>
+                        <ul class="detail-list">
+                            <li>Collaborated with neighbors and local leaders to organize a petition to the Select Board.</li>
+                            <li>Authored and delivered a <a href="https://www.youtube.com/watch?v=ZTmQdAMktgA&t=1h12m" target="_blank" rel="noopener noreferrer" style="color:var(--accent-burgundy);">presentation to the Select Board</a> to build consensus around this longstanding safety issue.</li>
+                            <li>Resulted in ongoing design work and short-term safety improvements along the corridor.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="values">
+            <div class="content-section">
+                <div class="section-header"><h2 class="section-title">My Values</h2></div>
+                <div class="detail-section">
+                    <h3>Safe Streets</h3>
+                    <p style="color:var(--text-secondary);font-size:16px;margin-bottom:16px;">Everyone deserves to get where they're going safely, whether driving, walking, or biking. Through my work on the Park Ave Safety Study and with Everywhere Arlington Liveable Streets, I've advocated for real solutions to longstanding safety problems. On the Select Board, <strong>I'll work to adopt a Vision Zero policy</strong> (a commitment to eliminate traffic deaths and serious injuries) and support fast, proven safety improvements that don't wait for perfect plans.</p>
+                    <h3>Excellence in Education</h3>
+                    <p style="color:var(--text-secondary);font-size:16px;margin-bottom:16px;">Our schools are Arlington's foundation. They served me well as a student and are serving my children well today. That reputation requires sustained investment and community support. I'm committed to ensuring our students and teachers have the resources they need to succeed. <strong>That's why I'm voting Yes on the <a href="https://yesforarlington.org/" target="_blank" rel="noopener noreferrer" style="color:var(--accent-burgundy);text-decoration:underline;">March 28th Override</a>.</strong></p>
+                    <h3>Housing for Every Generation</h3>
+                    <p style="color:var(--text-secondary);font-size:16px;margin-bottom:16px;">Arlington should be home for every stage of life. I built an accessory dwelling unit so my mother could age safely in place, and helped my mother-in-law purchase a condo in a multi-family building to bring her closer to her grandchildren. <strong>I'll support policies that make it easier to build housing options</strong> like these, allowing seniors to downsize without leaving the community they love and giving the next generation a foothold in our town.</p>
+                    <h3>Sustainable Growth</h3>
+                    <p style="color:var(--text-secondary);font-size:16px;">Smart, well-planned development is essential to Arlington's long-term health and quality of life. I support strategic growth along our key corridors to strengthen business districts, expand mixed-use housing, and diversify our tax base. <strong>I'll advocate for well-planned commercial projects</strong> that generate revenue for schools, roads, parks, and town services while creating vibrant places to live, work, shop, and eat locally.</p>
+                </div>
+            </div>
+        </section>
+        <section id="endorsements">
+            <div class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">Endorsements</h2>
+                    <p class="section-subtitle">Endorsed by neighbors and leaders across Arlington</p>
+                </div>
+                <div class="testimonials-grid">
+                    <article class="testimonial-card" aria-label="Endorsement from Eric Helmuth">
+                        <div class="testimonial-header"><span class="testimonial-name">Eric Helmuth</span><span class="testimonial-role">Select Board Member</span></div>
+                        <div class="testimonial-body"><p>"Joe is a smart, collaborative leader who gets results the right way. I was impressed with how he led a successful neighborhood effort to advocate for street safety improvements by asking questions, doing his homework, and empowering his neighbors to be heard. As a Select Board member, Joe will bring these skills to the wider range of challenges facing Arlington."</p></div>
+                    </article>
+                    <article class="testimonial-card" aria-label="Endorsement from Leah Lyman Waldron">
+                        <div class="testimonial-header"><span class="testimonial-name">Leah Lyman Waldron</span><span class="testimonial-role">Local Pastor &amp; Arlington Resident</span></div>
+                        <div class="testimonial-body"><p>"Joe has been a key resource for our neighborhood and our congregation as we've worked to improve pedestrian safety along Park Avenue. He is smart, strategic, caring, committed, and centers the work rather than himself. He would make an incredible addition to the Select Board."</p></div>
+                    </article>
+                    <article class="testimonial-card" aria-label="Endorsement from Len Diggins">
+                        <div class="testimonial-header"><span class="testimonial-name">Len Diggins</span><span class="testimonial-role">Former Select Board Member</span></div>
+                        <div class="testimonial-body"><p>"Joe is smart, practical, forward-thinking, and most importantly, he is empathetic. I'm confident he will listen to everyone who reaches out to him and take into account the needs of all others as well. The Arlington community can take credit and be proud that it has raised someone like Joe. I've known that ever since he asked me about a transportation-related element in the capital budget which he felt deserved scrutiny. He was correct &mdash; which showed me not only how much he cares but also that he is willing and able to be a good steward for the community."</p></div>
+                    </article>
+                    <article class="testimonial-card" aria-label="Endorsement from Mana Joshi">
+                        <div class="testimonial-header"><span class="testimonial-name">Mana Joshi</span><span class="testimonial-role">Former Dallin Parent</span></div>
+                        <div class="testimonial-body"><p>"During my time working with Joe on Dallin's PTO, I was impressed by his ability to lead, collaborate, and implement forward-thinking changes, helping the organization evolve even in an environment that can be slow to adapt. His strong commitment to community progress makes him an excellent candidate for the Select Board."</p></div>
+                    </article>
+                    <article class="testimonial-card" aria-label="Endorsement from Adam Auster">
+                        <div class="testimonial-header"><span class="testimonial-name">Adam Auster</span><span class="testimonial-role">Town Meeting Member, Precinct 16</span></div>
+                        <div class="testimonial-body"><p>"Joe has been a consistent, pragmatic advocate for street safety, as an individual and an active member of the Everywhere Arlington Livable Streets Coalition."</p></div>
+                    </article>
+                    <article class="testimonial-card" aria-label="Endorsement from Kara Baskin">
+                        <div class="testimonial-header"><span class="testimonial-name">Kara Baskin</span><span class="testimonial-role">Dallin Parent</span></div>
+                        <div class="testimonial-body"><p>"Joe is smart, efficient, and responsive. Most of all, he is demonstrably committed to improving our town. He has the right mix of competence and lived experience for this job, and I'm happy to endorse him."</p></div>
+                    </article>
+                    <article class="testimonial-card" aria-label="Endorsement from Barbara Thornton">
+                        <div class="testimonial-header"><span class="testimonial-name">Barbara Thornton</span><span class="testimonial-role">Former Town Meeting Member, Precinct 16</span></div>
+                        <div class="testimonial-body">
+                            <p>"Joe Solomon grew up in Arlington. He graduated from Arlington High, married, and started a family here. At some point he realized something was missing &mdash; his mother needed a place to live nearby. He became an early adopter as Arlington moved toward supporting Accessory Dwelling Units, spoke publicly at Town Meeting, and shared his family's experience through ACMI with this new approach to intergenerational housing.</p>
+                            <p>Support for ADUs is just one instance where Joe showed strong leadership through example. He has continued to use that model in his work with the Arlington Capital Planning Committee. Joe wants the best for our Town, he is straightforward, and he leads by example. He is just the kind of thoughtful, reflective, respectful leader I would like to see on the Arlington Select Board. I hope you will give him your vote."</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section id="contact">
+            <div class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">Stay In Touch!</h2>
+                    <p class="section-subtitle">We're glad you're here. Stay in touch and join neighbors who believe in Arlington's future.</p>
+                </div>
+                <div class="detail-section">
+                    <form class="contact-form" novalidate>
+                        <div class="form-group">
+                            <label for="contact-name">Full Name *</label>
+                            <input type="text" id="contact-name" name="name" placeholder="First and Last Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email *</label>
+                            <input type="email" id="contact-email" name="email" required>
+                        </div>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="host-coffee" id="host-coffee">
+                                <span>I'm interested in hosting a coffee for the campaign</span>
+                            </label>
+                        </div>
+                        <button type="submit" class="submit-button">Submit</button>
+                        <div class="form-feedback" id="form-feedback" role="alert"></div>
+                    </form>
+                    <p class="contact-email-line">Or reach us directly at <a href="/cdn-cgi/l/email-protection#5832373d3e372a392a3431363f2c3736183f35393134763b3735"><span class="__cf_email__" data-cfemail="1d7772787b726f7c6f7174737a6972735d7a707c7471337e7270">[email&#160;protected]</span></a>.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer role="contentinfo">
+        <div class="social-links">
+            <a href="https://facebook.com/JoeForArlington" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page (opens in new window)"><i data-lucide="facebook" aria-hidden="true"></i></a>
+            <a href="/cdn-cgi/l/email-protection#e3898c86858c9182918f8a8d84978c8da3848e828a8fcd808c8e" class="social-icon" aria-label="Send us an email"><i data-lucide="mail" aria-hidden="true"></i></a>
+        </div>
+        <p><strong>Committee to Elect Joseph Solomon</strong></p>
+        <p>Arlington, MA 02476</p>
+        <div class="footer-legal">
+            <p>Paid for by the Committee to Elect Joseph Solomon</p>
+            <div style="margin-top:10px;"><a href="https://www.arlingtonma.gov/town-governance/elections-voting/" target="_blank" rel="noopener noreferrer">Voter Info <span class="visually-hidden">(opens in new window)</span></a></div>
+        </div>
+    </footer>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var form = document.querySelector('.contact-form');
+            if (form) form.addEventListener('submit', handleFormSubmit);
+            try { if (typeof lucide !== 'undefined') lucide.createIcons(); } catch(e) {}
+        });
+        window.addEventListener('load', function() {
+            try { if (typeof lucide !== 'undefined') lucide.createIcons(); } catch(e) {}
+        });
+        function showFeedback(type, message) {
+            var fb = document.getElementById('form-feedback');
+            fb.className = 'form-feedback ' + type;
+            fb.textContent = message;
+            fb.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            var name = document.getElementById('contact-name').value.trim();
+            var email = document.getElementById('contact-email').value.trim();
+            var hostCoffee = document.getElementById('host-coffee').checked;
+            var submitButton = event.target.querySelector('.submit-button');
+            if (!name || !email) { showFeedback('error', 'Please enter your name and email address.'); return; }
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) { showFeedback('error', 'Please enter a valid email address.'); return; }
+            submitButton.disabled = true;
+            submitButton.textContent = 'Submitting...';
+            var scriptURL = 'https://script.google.com/macros/s/AKfycbxIOT_IqGs44XzV99YgXx3R8iWDr6LecP69_rjqJeL1NxAVytIoqCn_4_I7IyJMEds9og/exec';
+            fetch(scriptURL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: name, email: email, hostCoffee: hostCoffee }) })
+            .then(function() {
+                var message = 'Thank you, ' + name + '! You\'ve been added to our list.';
+                if (hostCoffee) message += ' We\'ll also be in touch about hosting a coffee.';
+                showFeedback('success', message);
+                event.target.reset();
+                submitButton.disabled = false;
+                submitButton.textContent = 'Submit';
+            })
+            .catch(function(error) {
+                console.error('Error:', error);
+                showFeedback('error', 'There was an error submitting the form. Please try again or email us at joeforarlington@gmail.com');
+                submitButton.disabled = false;
+                submitButton.textContent = 'Submit';
+            });
+        }
+        function toggleMenu() {
+            var navLinks = document.getElementById('navLinks');
+            var menuBtn = document.querySelector('.mobile-menu-toggle');
+            var isOpen = navLinks.classList.toggle('open');
+            menuBtn.setAttribute('aria-expanded', isOpen);
+        }
+        function toggleExpand(id, btn) {
+            var el = document.getElementById(id);
+            var isOpen = el.classList.toggle('open');
+            btn.setAttribute('aria-expanded', isOpen);
+            var chevron = btn.querySelector('.chevron');
+            if (chevron) chevron.classList.toggle('open', isOpen);
+        }
+        document.querySelectorAll('.nav-link').forEach(function(link) {
+            link.addEventListener('click', function() {
+                document.getElementById('navLinks').classList.remove('open');
+                document.querySelector('.mobile-menu-toggle').setAttribute('aria-expanded', 'false');
+            });
+        });
+        window.addEventListener('scroll', function() {
+            var sections = document.querySelectorAll('section[id]');
+            var navLinks = document.querySelectorAll('.nav-link');
+            var current = '';
+            sections.forEach(function(section) {
+                if (window.pageYOffset >= section.offsetTop - 100) { current = section.getAttribute('id'); }
+            });
+            navLinks.forEach(function(link) {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) { link.classList.add('active'); }
+            });
+        });
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joe For Arlington - A Better Arlington for Every Generation</title>
     <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js" defer></script>
     <style>
